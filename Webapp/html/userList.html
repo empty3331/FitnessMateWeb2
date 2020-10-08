@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원관리</title>
+
+    <!-- icon 사용을 위한 css -->
+    <link rel="stylesheet" href="../assets/css/fontawesome/all.css">
+
+    <!-- 반드시 넣어야 하는 2가지 css -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+
+    <!-- 반드시 넣어야 하는 2가지 js -->
+    <script src="../assets/js/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/modal.js"></script>
+
+    <!-- slide -->
+    <link href="../assets/js/swiper-4.2.6/dist/css/swiper.min.css" rel="stylesheet">
+    <script src="../assets/js/swiper-4.2.6/dist/js/swiper.min.js"></script>
+
+    <!-- 해당 페이지 css -->
+    <link rel="stylesheet" href="../assets/css/mypage.css">
+<style>
+
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper{
+    padding: 0px;
+}
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper img{
+    float: left;
+    width: 400px;
+    height: 400px;
+}
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper div{
+    padding-left: 430px;
+    text-align: left;
+    line-height: 180%;
+}
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper div p.label {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+/* 인바디 */
+div.inbody_record{
+    float: left;
+}
+div.graph {
+    float: right;
+    background-color: #aaaaaa;
+    width: 500px;
+    height: 400px;
+}
+div.inbody-wrapper div.inbody_record form table tr th{
+    width: 100px;
+    height: 50px;
+    text-align: right;
+    font-weight: 600;
+}
+div.inbody-wrapper div.inbody_record form table tr td input{
+    width: 100px;
+    height: 35px;
+    margin-left: 15px;
+}
+div.inbody-wrapper div.inbody_record form table{
+    margin: 50px 0px 0px 22px;
+
+}
+div.inbody-wrapper div.inbody_record{
+    width: 290px;
+    height: 400px;
+    position: relative;
+}
+div.inbody-wrapper div.inbody_record form button{
+    position: absolute;
+    bottom: 10px;
+    right: -10px;
+
+}
+
+
+</style>
+
+    <title>write record</title>
+
+</head>
+<body>
+    <header id="header">
+        <div class="wrapper clearfix">
+            <h1 class="logo">
+                <a href="../html/index.html">
+                    <img src="../assets/image/logoB.jpeg" title="logo" alt="logo">
+                </a>
+            </h1>
+            <a href="../html/search.html" class="search-link"><i class="fas fa-search"></i></a>
+            <nav id="nav">
+            </nav>
+            <div class="btn-area clearfix">
+                <a href="index.html" class="button sub">로그아웃</a>
+                <a href="trainer_schedule.html" class="button main">마이페이지</a>
+            </div>
+        </div>
+    </header>
+    <!-- header -->
+
+    <div id="container">
+
+        <div class="summary-wrapper">
+            <div class="summary clearfix">
+                <p class="date">2020년 8월 17일</p>
+                <div class="statistics">
+                    <dl class="review">
+                        <dt>평점</dt>
+                        <dd>4.7점 / 38개</dd>
+                    </dl>
+                    <dl>
+                        <dt>현재 회원 수</dt>
+                        <dd>23명</dd>
+                    </dl>
+                    <dl>
+                        <dt>누적 회원 수</dt>
+                        <dd>120명</dd>
+                    </dl>
+                </div>
+                <div class="schedule-wrapper">
+                    <h3 class="title">오늘의 일정</h3>
+                    <ul class="schedule-list">
+                        <li class="schedule">
+                            <span class="name">김상철 회원님</span>
+                            <span class="time">AM 08:00 - 10:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">정희봉 회원님</span>
+                            <span class="time">AM 10:00 - 11:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">홍길동 회원님</span>
+                            <span class="time">AM 11:00 - 12:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">고구마 회원님</span>
+                            <span class="time">PM 2:00 - 3:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">김구리 회원님</span>
+                            <span class="time">PM 3:00 - 4:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">가나다 회원님</span>
+                            <span class="time">PM 5:00 - 6:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="menu-wrapper">
+            <ul class="menu clearfix">
+                <li><a href="trainer_schedule.html">스케쥴</a></li>
+                <li><a href="exList.html">운동 관리</a></li>
+                <li><a href="userList.html">회원 관리</a></li>
+                <li><a href="trainer_profile.html">프로필</a></li>
+            </ul>
+        </div>
+        <!-- mypage공용 -->
+
+        <div class="wrapper">
+            <form id="userSearchForm" class="clearfix">
+                <h3 class="title">회원 검색</h3>
+                <div class="radio-wrapper clearfix">
+                    <input type="radio" id="nowMember" name="member" value="now" checked>
+                    <label for="nowMember" onclick="showUserList($(this));">현재회원</label>
+                    <input type="radio" id="formerMember" name="member" value="former">
+                    <label for="formerMember" onclick="showUserList($(this));">이전회원</label>
+                </div>
+                <input type="text" id="searchKeyword" name="searchKeyword" placeholder="이름 혹은 아이디를 입력해주세요" onkeyup="searchByKeyword($(this));">
+                <button type="button" id="addUserBtn" class="button main" onclick="showAddUserModal();">회원 추가</button>
+            </form>
+            <ul class="user-list now clearfix">
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/Lee-Kwang-soo.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">이광수</span>
+                        <span class="id">kslee0421</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/LeeHyoRi.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">이효리</span>
+                        <span class="id">dqwhdwqj1232</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/Yang-Se-chan.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">양세찬</span>
+                        <span class="id">yangcyangc</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/JungWooSung.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">정우성</span>
+                        <span class="id">jsw9232</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/Yoo-Jae-Suk.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">유재석</span>
+                        <span class="id">yoosansle</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/Jeongjae-Lee.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">이정재</span>
+                        <span class="id">imking2302</span>
+                    </p>
+                </li>
+            </ul>
+            <ul class="user-list former clearfix off">
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/JungWooSung.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">정우성</span>
+                        <span class="id">jsw9232</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/Yoo-Jae-Suk.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">유재석</span>
+                        <span class="id">yoosansle</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/Lee-Kwang-soo.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">이광수</span>
+                        <span class="id">kslee0421</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/LeeHyoRi.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">이효리</span>
+                        <span class="id">dqwhdwqj1232</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/Yang-Se-chan.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">양세찬</span>
+                        <span class="id">yangcyangc</span>
+                    </p>
+                </li>
+                <li class="user clearfix" onclick="showUser();">
+                    <img src="../assets/image/face/Jeongjae-Lee.jpg" alt="profile image" title="profile image">
+                    <p class="info">
+                        <span class="name">이정재</span>
+                        <span class="id">imking2302</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <footer id="footer">
+        <div class="wrapper">
+            <ul class="agree clearfix">
+                <li><a href="#none">개인정보처리방침</a></li>
+                <li><a href="#none">이용약관</a></li>
+                <li><a href="#none">이메일무단수집거부</a></li>
+                <li><a href="#none">뉴스레터신청</a></li>
+                <li><a href="#none">사이트맵</a></li>
+            </ul>
+            <address>
+                <p>
+                    <span>피트니스메이트(주)</span>
+                    <span>사업자 등록번호 231-81-24552</span>
+                    <span>대표이사 황예지, 김주혜</span>
+                    <span>주소 서울특별시 동대문구 천호대로 26 (신설동) 효정빌딩</span>
+                </p>
+                <p>
+                    <span class="on">제품관련 고객상담 080-000-0000</span>
+                    <span class="on">웹사이트문의 02-2222-2222</span>
+                    <span>상담시간 평일 09:00~17:30(토, 일요일, 공휴일 휴무)</span>
+                    <span>개인정보 관리책임자 이웅희</span>
+                </p>
+            </address>
+            <p class="right"><span>COPYRIGHT 하이미디어 풀스택과정 C팀.</span> ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+    <div class="modal-layer" id="userInfoModal">
+        <div class="modal-wrapper">
+            <button type="button" class="close-btn" onclick="forceHideModal('#userInfoModal')">X</button>
+            <div class="label-wrapper clearfix">
+                <button type="button" class="label-btn profile-btn on" data-tab="profile" onclick="showTab($(this))">프로필</button>
+                <button type="button" class="label-btn review-btn" data-tab="inbody" onclick="showTab($(this))">인바디</button>
+                <button type="button" class="label-btn location-btn" data-tab="exercise" onclick="showTab($(this))">운동기록</button>
+            </div>
+            <div class="modal-content">
+                <div class="label-tab profile-wrapper on">
+                    <img src="../assets/image/face/LeeHyoRi.jpg" alt="profile image" title="profile image">
+                    <div>
+                        <p class="label">· 회원 이름</p>
+                        <p>&nbsp; 김회원 (male)</p>
+                        <p class="label">· ID</p>
+                        <p>&nbsp; id01</p>
+                        <p class="label">· 연락처</p>
+                        <p>&nbsp; 010-0000-0000</p>
+                        <p class="label">· 등록기간</p>
+                        <p>&nbsp; 2020/08/25 ~ 2020/09/25</p>
+                        <p class="label">· 잔여횟수</p>
+                        <p>&nbsp; 3 / 4</p>
+                        <form action="">
+                            <p class="label">· 메모</p>
+                            <textarea name="memo">메모메모메모</textarea>
+                            <button type="button">메모 수정</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="label-tab inbody-wrapper">
+                   <!-- 인바디 내역이 들어옵니다 -->
+                   <div class="inbody_record">
+                        <select>
+                            <option>인바디 입력하기</option>
+                            <option value="1">2020-08-26</option>
+                            <option value="2">2020-07-26</option>
+                            <option value="3">2020-06-26</option>
+                            <option value="4">2020-05-26</option>
+                        </select>
+
+                        <form action="" method="">
+                            <table>
+                                <tr>
+                                    <th>체중 (kg)</th>
+                                    <td><input type="number" max="200" min="0"  step="0.1" placeholder="00.0"></td>
+                                </tr>
+                                <tr>
+                                    <th>체지방률 (%)</th>
+                                    <td><input type="number" max="200" min="0"  step="0.1" placeholder="00.0"></td>
+                                </tr>
+                                <tr>
+                                    <th>근육량 (%)</th>
+                                    <td><input type="number" max="200" min="0"  step="0.1" placeholder="00.0"></td>
+                                </tr>
+                                <tr>
+                                    <th>BMI (kg/m²)</th>
+                                    <td><input type="number" max="200" min="0"  step="0.1" placeholder="00.0"></td>
+                                </tr>
+                            </table>
+                            <button type="button" class="button main">저장</button>
+                            <!-- <button type="button" class="button sub">수정</button> -->
+                        </form>
+                    </div>
+
+                    <div class="graph">
+                        그래프그래프
+                        그래프가 올거에요
+
+                    </div>
+                </div>
+                <div class="label-tab exercise-wrapper">
+                    운동기록 내역이 들어옵니다
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-layer" id="addUserModal">
+        <div class="modal-wrapper">
+            <button type="button" class="close-btn" onclick="forceHideModal('#userInfoModal')">X</button>
+            <div class="modal-content">
+                <form id="addUserForm">
+                    <p class="title">회원 추가</p>
+                    <div class="search-wrapper">
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-btn-area">
+                <button type="button" class="modal-cancel" onclick="forceHideModal('#addUserModal')">취소</button>
+                <button type="button" class="modal-confirm off" onclick="addUser();">추가</button>
+            </div>
+        </div>
+    </div>
+    <!-- footer가 필요한 페이지에서 사용 -->
+    <script type="text/javascript">
+
+        function showTab(target) {
+            var targetTab = target.attr("data-tab");
+
+            //다른 버튼 on 제거
+            $(".label-wrapper .label-btn").removeClass("on");
+            //다른 탭 on 제거
+            $(".label-tab").removeClass("on");
+
+            //label에 on
+            target.addClass("on");
+
+            //tab에 on
+            $("#userInfoModal").find("." + targetTab + "-wrapper").addClass("on");
+
+        }
+        function showUserList(target) {
+            var targetType = target.prev("input[type='radio']").val();
+            $("ul.user-list").addClass("off");
+            $("input#searchKeyword").val("");
+            $("ul.user-list li").show();
+            $("ul.user-list."+targetType).removeClass("off");
+        }
+        
+        function showUser() {
+            showModal("#userInfoModal");
+        }
+
+        function searchByKeyword(target) {
+            var keyword = target.val();
+
+            $("ul.user-list li").hide();
+
+            $("span.name:contains('"+keyword+"')").parents("li").show();
+            $("span.id:contains('"+keyword+"')").parents("li").show();
+        }
+        
+        function showAddUserModal() {
+            showModal("#addUserModal");
+        }
+
+        function addUser() {
+            forceHideModal('#addUserModal');
+        }
+    </script>
+</body>
+</html>

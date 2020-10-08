@@ -1,0 +1,295 @@
+.modal-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 8000;
+  display: none;
+  transition: opacity 0s;
+  vertical-align: middle;
+
+  &::after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+  }
+}
+
+.funcmodal-layer {
+  overflow-y: auto;
+}
+
+.funcmodal-wrapper {
+  //overflow-y: auto;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+  @media @extra-small {
+  }
+
+  .modal-content {
+    padding: 40px 0;
+    border: 0; //부트스트랩과 css충돌
+    border-radius: 0; //부트스트랩과 css충돌
+    box-shadow: none;
+    box-sizing: border-box;
+    @media @extra-small {
+    }
+  }
+}
+
+/*alert modal*/
+
+.modal-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+  transform: translateY(-200%);
+  -webkit-transform: translateY(-200%);
+  -ms-transform: translateY(-200%);
+  -o-transform: translateY(-200%);
+  transition: all .7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition: all .7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  vertical-align: middle;
+  @media @extra-small {
+  }
+
+  .modal-content {
+    padding: 40px 0;
+    border: 0; //부트스트랩과 css충돌
+    border-radius: 0; //부트스트랩과 css충돌
+    box-shadow: none;
+    box-sizing: border-box;
+    @media @extra-small {
+    }
+  }
+}
+
+.modal-msg {
+  width: 100%;
+  text-align: center;
+  //margin: 50px auto;
+  .tit { //모달 메인 텍스트
+    padding: 0 16px;
+    margin: 0;
+    color: @color-gray;
+    font-size: 20px;
+    font-weight: 700;
+    word-break: keep-all;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    @media @extra-small {
+      font-size: 16px;
+    }
+  }
+
+  p { //모달 서브 텍스트
+    padding: 0 16px;
+    margin: 14px 0 0;
+    color: @color-gray;
+    font-size: 14px;
+    word-break: keep-all;
+    word-wrap: break-word;
+    box-sizing: border-box;
+    @media @extra-small {
+      margin-top: 10px;
+      font-size: 12px;
+    }
+  }
+
+  .title {
+    font-size: 18px;
+    color: @color-main;
+    margin-bottom: 5px;
+  }
+
+  .message {
+    margin-top: 0px;
+  }
+
+  .gold {
+    color: #ab876f;
+  }
+}
+
+//모달 버튼영역. 기본은 닫기버튼 두개일 경우
+.modal-btn-area {
+  width: 100%;
+  line-height: 60px;
+  text-align: center;
+  border-top: @color-gray;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+  @media @extra-small {
+  }
+  //모달 버튼이 한개만 존재할 경우
+  &.full-modal-btn {
+    a, button {
+      width: 100%;
+    }
+  }
+
+  a {
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+
+  button {
+    width: 50%;
+    font-size: 16px;
+    line-height: 58px;
+    background-color: #fff;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    @media @extra-small {
+    }
+  }
+
+  .modal-confirm,
+  .modal-cancel,
+  .close-modal {
+    width: 50%;
+    float: left;
+    color: @color-gray;
+    box-sizing: border-box;
+    background-color: #fff;
+    cursor: pointer;
+
+    &.main {
+      color: @color-main;
+    }
+
+    &.off {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+}
+
+#loginModal {
+  .modal-wrapper {
+    width: 380px;
+
+    .modal-content p {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .modal-btn-area table {
+      margin-bottom: 10px;
+
+      tr th {
+        padding-right: 10px;
+        text-align: right;
+      }
+    }
+  }
+}
+
+#addScheduleModal,
+#modifyScheduleModal {
+  .modal-wrapper {
+    width: 400px;
+    text-align: left;
+
+    .modal-content {
+      padding: 20px 20px 0;
+    }
+    button.delete-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 35px;
+      line-height: 35px;
+    }
+    select {
+      width: 80px;
+      height: 35px;
+      display: inline-block !important;
+    }
+
+    input[name="amount"] {
+      width: 100px;
+    }
+
+    select[name="ptNo"] {
+      width: 200px;
+      &.disabled {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+
+    .text {
+      font-size: 20px;
+      margin: 0 0 10px;
+      font-weight: 700;
+    }
+
+    ol {
+      margin: 0 30px 0 0;
+      float: left;
+    }
+
+    select[name="hour"], select[name="minute"] {
+      margin-top: 10px;
+    }
+
+    .modal-btn-area {
+      button {
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
+/* 이미지 크롭 모달 */
+div.crop-wrapper {
+	position: fixed;
+	left:50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	max-width: 800px;
+	max-height: 600px;
+	z-index: 20;
+	img {
+		max-width: 100%;
+	}
+	>button {
+		position: absolute;
+		z-index: 2;
+		bottom: 10px;
+		padding: 8px;
+		background-color: #fff;
+		border: 0;
+		border-radius: 4px;
+		cursor: pointer;
+		&.confirm {
+			right: 10px;
+		}
+		&.cancel {
+			right: 60px;
+		}
+	}
+	.cropper-wrap-box {
+		background-color: #fff;
+	}
+}

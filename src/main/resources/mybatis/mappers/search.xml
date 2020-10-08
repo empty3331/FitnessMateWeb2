@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="search">
+
+	<!--지역 정보 불러오기 -->
+	<select id="addressProvince" resultType="com.javaex.vo.AddressVo">
+	<![CDATA[
+	SELECT province
+	FROM address
+	GROUP by province
+	ORDER BY province ASC
+	]]>
+	</select>
+
+	<!--구 정보 불러오기 -->
+	<select id="addressCity" parameterType="String"
+	resultType="com.javaex.vo.AddressVo">
+	<![CDATA[
+	SELECT city
+	FROM address
+	WHERE province = #{province}
+	GROUP by city
+	ORDER BY city ASC
+	]]>
+	</select>
+
+	<!--동 정보 불러오기 -->
+	<select id="addressRegion" parameterType="String"
+	resultType="com.javaex.vo.AddressVo">
+	<![CDATA[
+	SELECT region
+	FROM address
+	WHERE city like #{city}
+	ORDER BY region ASC
+	]]>
+	</select>
+
+	<!--전문분야 정보 불러오기 -->
+	<select id="fieldname" resultType="com.javaex.vo.UserVo">
+	<![CDATA[
+	SELECT fieldno,fieldname
+	FROM interest_field
+	]]>
+	
+	</select>
+
+	<!-- 트레이너 숫자 불러오기 -->
+	<select id="getTrainerCount" parameterType="SearchVo" resultType="int">
+		<![CDATA[
+			select count(*)
+			from
+			(SELECT distinct u.userNo
+			FROM users u, interest_list i
+			WHERE u.userType = 'trainer'
+			AND u.userNo = i.userNo(+)
+			and invisible is null
+		]]>
+		<if test="location !='' and  location!=null">
+			<![CDATA[
+				AND location like '%'||#{location}||'%'
+			]]>
+		</if>
+		<if test="name!='' and  name!=null">
+			<![CDATA[
+				AND name like '%'||#{name}||'%'
+			]]>
+		</if>
+		<if test="gender!='' and  gender!=null">
+			<![CDATA[
+				AND gender = #{gender}
+			]]>
+		</if>
+		<if test="field !=0 and field!=null">
+			<![CDATA[
+				and i.fieldNo = #{field}
+			]]>
+		</if>
+		<![CDATA[
+		)
+		]]>
+	</select>
+
+	<!-- 트레이너 리스트 불러오기 -->
+	<select id="getTrainerList" parameterType="SearchVo" resultType="UserVo">
+		<![CDATA[
+			select	orderedTrainerList.*
+			from	(select	rownum rn,trainerList.*
+					from	(SELECT	distinct u.userNo,
+									u.userId,
+									u.name,
+									u.profileImg,
+									u.introduction,
+									u.location,
+									u.company
+							FROM users u, interest_list i
+							WHERE u.userType = 'trainer'
+							AND u.userNo = i.userNo(+)
+							and u.invisible is null
+		]]>
+		<if test = "location !='' and  location!=null" >
+			<![CDATA[
+				AND u.location like '%'||#{location}||'%'
+			]]>
+		</if>
+		<if test = "name!='' and  name!=null" >
+			<![CDATA[
+				AND u.name like '%'||#{name}||'%'
+			]]>
+		</if>
+		<if test = "gender!='' and  gender!=null" >
+			<![CDATA[
+				AND u.gender = #{gender}
+			]]>
+		</if>
+		<if test = "field !=0 and field!=null" >
+			<![CDATA[
+				and i.fieldNo = #{field}
+			]]>
+		</if>
+		<![CDATA[
+			 ORDER BY u.userno DESC) trainerList
+			 ) orderedTrainerList
+			  where   rn>=(#{page}*#{pageView}-#{pageView}+1) and rn<=(#{page}*#{pageView})
+		]]>
+
+	</select>
+
+
+	<!--트레이너 상세정보 불러오기 -->
+	<select id="readTrainer" parameterType="int"
+	resultType="com.javaex.vo.UserVo">
+	<![CDATA[
+	SELECT u.userno as "userNo",
+       u.userid as "userId",
+       u.password,u.name,u.gender,u.phone,
+       nvl(u.birthdate,sysdate) AS birthDate,
+       u.usertype as "userType",
+       u.profileimg as "profileImg",
+       u.introduction,u.career,
+       u.location,u.company,u.price,workingHours
+	FROM users u
+	where userType = 'trainer'
+    and u.userno = #{no}
+	]]>
+	
+	</select>
+
+	<!--트레이너 상세정보 불러오기(전문분야) -->
+	<select id="readField" parameterType="int"
+	resultType="com.javaex.vo.UserVo">
+	<![CDATA[
+		SELECT fi.fieldname as "fieldName"
+		FROM interest_list li,interest_field fi
+		where li.fieldno = fi.fieldno
+		and li.userno = #{no}
+	]]>
+	
+	</select>
+
+	<!--트레이너 상세정보 불러오기(수상경력) -->
+	<select id="readCareer" parameterType="int" resultType="com.javaex.vo.CareerVo">
+	<![CDATA[
+		SELECT recordinfo as "recordInfo"
+		FROM career_list
+		where userno= #{no}
+	]]>
+	
+	</select>
+
+	<!--트레이너 상세정보 불러오기(리뷰) -->
+	<select id="readReviewInfo" parameterType="int"
+	resultType="com.javaex.vo.ReviewVo">
+	<![CDATA[
+		SELECT count(r.score) reviewCount, round(nvl(avg(score),0),1) as "reviewAvg"
+		FROM review r,pt p
+		WHERE r.ptno = p.ptno
+		and r.order_no = 1
+		and p.trainerno = #{no}
+	]]>
+	
+	</select>
+
+
+
+
+</mapper>

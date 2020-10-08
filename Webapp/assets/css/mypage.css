@@ -1,0 +1,963 @@
+@charset "UTF-8";
+.modal-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 8000;
+  display: none;
+  transition: opacity 0s;
+  vertical-align: middle;
+}
+.modal-layer::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.funcmodal-layer {
+  overflow-y: auto;
+}
+.funcmodal-wrapper {
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+}
+.funcmodal-wrapper .modal-content {
+  padding: 40px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+/*alert modal*/
+.modal-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+  transform: translateY(-200%);
+  -webkit-transform: translateY(-200%);
+  -ms-transform: translateY(-200%);
+  -o-transform: translateY(-200%);
+  transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  vertical-align: middle;
+}
+.modal-wrapper .modal-content {
+  padding: 40px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.modal-msg {
+  width: 100%;
+  text-align: center;
+}
+.modal-msg .tit {
+  padding: 0 16px;
+  margin: 0;
+  color: #292c33;
+  font-size: 20px;
+  font-weight: 700;
+  word-break: keep-all;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 669px) {
+  .modal-msg .tit {
+    font-size: 16px;
+  }
+}
+.modal-msg p {
+  padding: 0 16px;
+  margin: 14px 0 0;
+  color: #292c33;
+  font-size: 14px;
+  word-break: keep-all;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 669px) {
+  .modal-msg p {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+.modal-msg .title {
+  font-size: 18px;
+  color: #cc2121;
+  margin-bottom: 5px;
+}
+.modal-msg .message {
+  margin-top: 0px;
+}
+.modal-msg .gold {
+  color: #ab876f;
+}
+.modal-btn-area {
+  width: 100%;
+  line-height: 60px;
+  text-align: center;
+  border-top: #292c33;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+}
+.modal-btn-area.full-modal-btn a,
+.modal-btn-area.full-modal-btn button {
+  width: 100%;
+}
+.modal-btn-area a {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.modal-btn-area button {
+  width: 50%;
+  font-size: 16px;
+  line-height: 58px;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+.modal-btn-area .modal-confirm,
+.modal-btn-area .modal-cancel,
+.modal-btn-area .close-modal {
+  width: 50%;
+  float: left;
+  color: #292c33;
+  box-sizing: border-box;
+  background-color: #fff;
+  cursor: pointer;
+}
+.modal-btn-area .modal-confirm.main,
+.modal-btn-area .modal-cancel.main,
+.modal-btn-area .close-modal.main {
+  color: #cc2121;
+}
+.modal-btn-area .modal-confirm.off,
+.modal-btn-area .modal-cancel.off,
+.modal-btn-area .close-modal.off {
+  opacity: 0.5;
+  pointer-events: none;
+}
+#loginModal .modal-wrapper {
+  width: 380px;
+}
+#loginModal .modal-wrapper .modal-content p {
+  font-size: 24px;
+  font-weight: 600;
+}
+#loginModal .modal-wrapper .modal-btn-area table {
+  margin-bottom: 10px;
+}
+#loginModal .modal-wrapper .modal-btn-area table tr th {
+  padding-right: 10px;
+  text-align: right;
+}
+#addScheduleModal .modal-wrapper,
+#modifyScheduleModal .modal-wrapper {
+  width: 400px;
+  text-align: left;
+}
+#addScheduleModal .modal-wrapper .modal-content,
+#modifyScheduleModal .modal-wrapper .modal-content {
+  padding: 20px 20px 0;
+}
+#addScheduleModal .modal-wrapper button.delete-btn,
+#modifyScheduleModal .modal-wrapper button.delete-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 35px;
+  line-height: 35px;
+}
+#addScheduleModal .modal-wrapper select,
+#modifyScheduleModal .modal-wrapper select {
+  width: 80px;
+  height: 35px;
+  display: inline-block !important;
+}
+#addScheduleModal .modal-wrapper input[name="amount"],
+#modifyScheduleModal .modal-wrapper input[name="amount"] {
+  width: 100px;
+}
+#addScheduleModal .modal-wrapper select[name="ptNo"],
+#modifyScheduleModal .modal-wrapper select[name="ptNo"] {
+  width: 200px;
+}
+#addScheduleModal .modal-wrapper select[name="ptNo"].disabled,
+#modifyScheduleModal .modal-wrapper select[name="ptNo"].disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+#addScheduleModal .modal-wrapper .text,
+#modifyScheduleModal .modal-wrapper .text {
+  font-size: 20px;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+#addScheduleModal .modal-wrapper ol,
+#modifyScheduleModal .modal-wrapper ol {
+  margin: 0 30px 0 0;
+  float: left;
+}
+#addScheduleModal .modal-wrapper select[name="hour"],
+#modifyScheduleModal .modal-wrapper select[name="hour"],
+#addScheduleModal .modal-wrapper select[name="minute"],
+#modifyScheduleModal .modal-wrapper select[name="minute"] {
+  margin-top: 10px;
+}
+#addScheduleModal .modal-wrapper .modal-btn-area button,
+#modifyScheduleModal .modal-wrapper .modal-btn-area button {
+  margin-top: 30px;
+}
+/* 이미지 크롭 모달 */
+div.crop-wrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  max-height: 600px;
+  z-index: 20;
+}
+div.crop-wrapper img {
+  max-width: 100%;
+}
+div.crop-wrapper > button {
+  position: absolute;
+  z-index: 2;
+  bottom: 10px;
+  padding: 8px;
+  background-color: #fff;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.crop-wrapper > button.confirm {
+  right: 10px;
+}
+div.crop-wrapper > button.cancel {
+  right: 60px;
+}
+div.crop-wrapper .cropper-wrap-box {
+  background-color: #fff;
+}
+/* import/variable { */
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.summary-wrapper {
+  position: relative;
+  height: 600px;
+  background-image: url("../image/mypage-01.jpg");
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+}
+.summary-wrapper:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.7;
+  z-index: 1;
+}
+.summary-wrapper .summary {
+  border: 1px solid #fff;
+  color: #fff;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 25px;
+  width: 800px;
+  height: 450px;
+  border-radius: 4px;
+  background-color: transparent;
+}
+.summary-wrapper .summary p.date {
+  color: #fff;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  line-height: 1;
+}
+.summary-wrapper .summary .statistics,
+.summary-wrapper .summary .schedule-wrapper {
+  width: 50%;
+  float: left;
+}
+.summary-wrapper .summary .statistics h3.title,
+.summary-wrapper .summary .schedule-wrapper h3.title {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #fff;
+  text-align: right;
+}
+.summary-wrapper .summary .statistics dl,
+.summary-wrapper .summary .schedule-wrapper dl {
+  margin-bottom: 30px;
+}
+.summary-wrapper .summary .statistics dl dt,
+.summary-wrapper .summary .schedule-wrapper dl dt,
+.summary-wrapper .summary .statistics dl dd,
+.summary-wrapper .summary .schedule-wrapper dl dd {
+  color: #fff;
+  line-height: 1;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+}
+.summary-wrapper .summary .statistics dl dt,
+.summary-wrapper .summary .schedule-wrapper dl dt {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.summary-wrapper .summary .statistics dl dd,
+.summary-wrapper .summary .schedule-wrapper dl dd {
+  margin-bottom: 5px;
+  font-size: 24px;
+}
+.summary-wrapper .summary ul.schedule-list {
+  text-align: right;
+}
+.summary-wrapper .summary ul.schedule-list li {
+  margin-bottom: 20px;
+}
+.summary-wrapper .summary ul.schedule-list li span.name {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+}
+.summary-wrapper .summary ul.schedule-list li span.time {
+  color: #fff;
+}
+.menu-wrapper {
+  background-color: #dadde6;
+  margin-bottom: 30px;
+}
+.menu-wrapper ul.menu {
+  height: 60px;
+  margin: 0 auto;
+  width: 1200px;
+}
+.menu-wrapper ul.menu li {
+  float: left;
+  margin-right: 60px;
+}
+.menu-wrapper ul.menu li a {
+  display: block;
+  color: #292c33;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 60px;
+}
+.calendar-wrapper {
+  padding-bottom: 70px;
+}
+.calendar-wrapper ul.schedule-guide {
+  width: 600px;
+  margin: 0 auto 30px;
+  padding: 20px;
+  box-sizing: border-box;
+  border: 1px solid #6b7799;
+  border-radius: 4px;
+  font-size: 0;
+  text-align: center;
+}
+.calendar-wrapper ul.schedule-guide li {
+  display: inline-block;
+  margin: 0 20px;
+  padding-left: 20px;
+  position: relative;
+  color: #292c33;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+}
+.calendar-wrapper ul.schedule-guide li:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+.calendar-wrapper ul.schedule-guide li.confirm:after {
+  background-color: #007bff;
+}
+.calendar-wrapper ul.schedule-guide li.reserved:after {
+  background-color: #28a745;
+}
+.calendar-wrapper ul.schedule-guide li.waiting:after {
+  background-color: #ffc107;
+}
+.calendar-wrapper ul.schedule-guide li.rejected:after {
+  background-color: #dc3545;
+}
+.calendar-wrapper #top {
+  display: none;
+}
+.calendar-wrapper #calendar {
+  overflow: visible;
+}
+.calendar-wrapper #calendar button.btn-primary {
+  margin: 0;
+  min-width: 0;
+  width: 80px;
+}
+.calendar-wrapper #calendar button.fc-prev-button,
+.calendar-wrapper #calendar button.fc-next-button {
+  min-width: 0;
+  width: 50px;
+}
+.calendar-wrapper #calendar button.fc-today-button {
+  min-width: 0;
+  display: inline-block;
+}
+.calendar-wrapper #calendar td.fc-daygrid-day {
+  position: relative;
+}
+.calendar-wrapper #calendar td.fc-daygrid-day:after {
+  content: '+';
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 24px;
+  height: 24px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: gray;
+  opacity: 0;
+  cursor: pointer;
+  border: 1px solid gray;
+}
+.calendar-wrapper #calendar td.fc-daygrid-day:hover:after {
+  transition: all ease 0.7s 0s;
+  opacity: 1;
+}
+.calendar-wrapper #calendar a.fc-daygrid-day-number {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.calendar-wrapper #calendar .fc-daygrid-day-events {
+  padding-top: 30px;
+}
+.calendar-wrapper #calendar table tbody td.fc-day {
+  height: 180px;
+}
+.calendar-wrapper #calendar .fc-scroller-harness {
+  overflow: visible;
+}
+.calendar-wrapper #calendar .btn_pop {
+  position: absolute;
+  z-index: 999;
+  background-color: #fff;
+  border: 1px solid #292c33;
+  -webkit-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.calendar-wrapper #calendar .btn_pop .button {
+  border-radius: 0;
+  margin: 0;
+  width: 120px;
+  border: 0;
+  color: #292c33;
+  text-decoration: none;
+}
+.calendar-wrapper #calendar .btn_pop .button:hover {
+  background-color: #dadde6;
+}
+.calendar-wrapper #calendar .btn_pop .button.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+.calendar-wrapper #calendar .btn_pop .button.disabled:hover {
+  background-color: #fff;
+}
+form#addExercise,
+#exerciseList {
+  width: 550px;
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 4px;
+  border: 1px solid #292c33;
+  text-align: center;
+  margin-bottom: 50px;
+}
+form#addExercise h2,
+#exerciseList h2 {
+  color: #292c33;
+  font-size: 30px;
+  font-weight: 700;
+  padding-bottom: 30px;
+}
+/* 운동관리 페이지 */
+form#addExercise {
+  float: left;
+}
+form#addExercise .input-box {
+  margin-bottom: 50px;
+  text-align: left;
+}
+form#addExercise button.add-exercise {
+  display: inline-block;
+}
+#exerciseList {
+  float: right;
+  height: 492px;
+  overflow-y: scroll;
+}
+#exerciseList .exercise {
+  position: relative;
+  box-sizing: border-box;
+  padding: 15px;
+  border: 1px solid #292c33;
+  text-align: left;
+}
+#exerciseList .exercise:not(last-of-type) {
+  margin-bottom: 15px;
+}
+#exerciseList .exercise h4.title {
+  color: #cc2121;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+#exerciseList .exercise p.detail span {
+  display: inline-block;
+  color: #292c33;
+  font-size: 16px;
+  margin-right: 20px;
+}
+#exerciseList .exercise p.detail span.part {
+  min-width: 120px;
+}
+#exerciseList .exercise button.delete-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #292c33;
+  font-size: 20px;
+  border: 0;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+}
+form#editProfileForm {
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #dadde6;
+  padding: 30px;
+  margin-bottom: 100px;
+}
+form#editProfileForm select {
+  width: 25%;
+  float: left;
+  margin-right: 15px;
+}
+form#editProfileForm .main-info .main-info-wrapper {
+  float: left;
+  width: 30%;
+}
+form#editProfileForm .main-info .main-info-wrapper div.profile-img {
+  float: left;
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+  border-radius: 50%;
+  border: 1px solid #cc2121;
+  overflow: hidden;
+  cursor: pointer;
+}
+form#editProfileForm .main-info .main-info-wrapper div.profile-img .dropzone-previews {
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+form#editProfileForm .main-info .main-info-wrapper button.change-btn {
+  float: left;
+  margin: 20px 0 0;
+  color: #fff;
+  background-color: #cc2121;
+  border: 0;
+}
+form#editProfileForm .main-info div.summary {
+  float: left;
+}
+form#editProfileForm .main-info div.summary p.name {
+  color: #292c33;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: left;
+}
+form#editProfileForm .main-info div.summary p.belong {
+  color: #008526;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: left;
+}
+form#editProfileForm .info-wrapper {
+  margin-top: 40px;
+}
+form#editProfileForm .info-wrapper .info {
+  float: left;
+  text-align: left;
+  width: 30%;
+}
+form#editProfileForm .info-wrapper .category-info,
+form#editProfileForm .info-wrapper .award-info {
+  width: 50%;
+  float: left;
+  text-align: left;
+}
+form#editProfileForm .info-wrapper .category-info .category,
+form#editProfileForm .info-wrapper .award-info .category,
+form#editProfileForm .info-wrapper .category-info .award,
+form#editProfileForm .info-wrapper .award-info .award {
+  display: inline-block;
+  min-width: 50px;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+}
+form#editProfileForm .info-wrapper .category-info .category:not(:last-of-type),
+form#editProfileForm .info-wrapper .award-info .category:not(:last-of-type),
+form#editProfileForm .info-wrapper .category-info .award:not(:last-of-type),
+form#editProfileForm .info-wrapper .award-info .award:not(:last-of-type) {
+  margin-right: 10px;
+}
+form#editProfileForm .info-wrapper .category-info .category.category,
+form#editProfileForm .info-wrapper .award-info .category.category,
+form#editProfileForm .info-wrapper .category-info .award.category,
+form#editProfileForm .info-wrapper .award-info .award.category {
+  background-color: #cc2121;
+}
+form#editProfileForm .info-wrapper .category-info .category.award,
+form#editProfileForm .info-wrapper .award-info .category.award,
+form#editProfileForm .info-wrapper .category-info .award.award,
+form#editProfileForm .info-wrapper .award-info .award.award {
+  background-color: #008526;
+}
+form#editProfileForm .pay-wrapper,
+form#editProfileForm .comment-wrapper {
+  text-align: left;
+  margin-top: 40px;
+}
+form#editProfileForm .pay-wrapper textarea.content,
+form#editProfileForm .comment-wrapper textarea.content {
+  display: block;
+  min-height: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 4px;
+  background-color: #f0f2f7;
+  border: 1px solid #dadde6;
+  color: #292c33;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+}
+form#editProfileForm button[type="submit"] {
+  margin: 50px auto 0;
+}
+form#userSearchForm h3.title {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+form#userSearchForm .radio-wrapper {
+  float: left;
+  margin-right: 30px;
+}
+form#userSearchForm input#searchKeyword {
+  float: left;
+}
+form#userSearchForm button#addUserBtn {
+  float: right;
+  margin: -10px 0 0 0;
+}
+ul.user-list {
+  margin-top: 50px;
+  min-height: 110px;
+}
+ul.user-list li.user {
+  float: left;
+  display: block;
+  width: calc((100% - 90px) / 4);
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #dadde6;
+  height: 80px;
+  padding: 10px 20px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+ul.user-list li.user:not( :nth-child(4n)) {
+  margin-right: 30px;
+}
+ul.user-list li.user:hover {
+  background-color: rgba(0, 138, 38, 0.5);
+  transition: 0.5s;
+}
+ul.user-list li.user.off {
+  display: none;
+}
+ul.user-list li.user img {
+  float: left;
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+ul.user-list li.user p.info {
+  float: left;
+}
+ul.user-list li.user p.info span.name {
+  display: block;
+  line-height: 30px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #292c33;
+}
+ul.user-list li.user p.info span.id {
+  display: block;
+  line-height: 30px;
+  font-size: 16px;
+  color: #45474d;
+}
+#userInfoModal .modal-wrapper {
+  position: relative;
+  width: 800px;
+  padding: 30px;
+  overflow: visible;
+  border-radius: 4px;
+}
+#userInfoModal .modal-wrapper:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 90%;
+  height: 20px;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+}
+#userInfoModal .modal-wrapper button.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border: 0;
+  font-size: 32px;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+}
+#userInfoModal .modal-wrapper .label-wrapper {
+  position: absolute;
+  left: 0;
+  top: -32px;
+  overflow: hidden;
+  z-index: -1;
+  border-radius: 10px;
+}
+#userInfoModal .modal-wrapper .label-wrapper button.label-btn {
+  display: block;
+  float: left;
+  width: 100px;
+  height: 40px;
+  background-color: #cc2121;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+#userInfoModal .modal-wrapper .label-wrapper button.label-btn.on {
+  color: #cc2121;
+  background-color: #fff;
+}
+#userInfoModal .modal-wrapper .modal-content .label-tab {
+  display: none;
+}
+#userInfoModal .modal-wrapper .modal-content .label-tab.on {
+  display: block;
+}
+#userInfoModal .modal-wrapper .modal-content .exercise-wrapper {
+  box-sizing: border-box;
+  padding-left: 20px;
+}
+#userInfoModal .modal-wrapper .modal-content .exercise-wrapper select[name='recordDate'] {
+  width: 200px;
+  margin-bottom: 20px;
+}
+#userInfoModal .modal-wrapper .modal-content .exercise-wrapper ul li {
+  display: none;
+  float: left;
+  text-align: left;
+  width: calc((100% - 80px)/4);
+  margin: 0 20px 20px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #45474d;
+  padding: 10px;
+  position: relative;
+}
+#userInfoModal .modal-wrapper .modal-content .exercise-wrapper ul li.on {
+  display: block;
+}
+#userInfoModal .modal-wrapper .modal-content .exercise-wrapper ul li p.name {
+  color: #cc2121;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  margin-bottom: 15px;
+}
+#userInfoModal .modal-wrapper .modal-content .exercise-wrapper ul li p.part {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #008526;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 20px;
+}
+#userInfoModal .modal-wrapper .modal-content .exercise-wrapper ul li p.detail {
+  color: #292c33;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+#addUserModal .modal-wrapper {
+  width: 360px;
+  padding: 0;
+}
+#addUserModal .modal-wrapper .modal-content {
+  padding: 20px;
+}
+#addUserModal .modal-wrapper .modal-content p.title {
+  color: #292c33;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+#addUserModal .modal-wrapper .modal-content .search-wrapper input[name='keyword'] {
+  float: left;
+  width: 200px;
+}
+#addUserModal .modal-wrapper .modal-content .search-wrapper button.search {
+  float: right;
+  margin: 0;
+  height: 30px;
+  min-width: 80px;
+  width: 80px;
+  line-height: 30px;
+  font-size: 16px;
+}
+#addUserModal .modal-wrapper .modal-content .search-result div.user {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #dadde6;
+  height: 80px;
+  padding: 10px 20px;
+}
+#addUserModal .modal-wrapper .modal-content .search-result div.user img {
+  float: left;
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+#addUserModal .modal-wrapper .modal-content .search-result div.user p.info {
+  float: left;
+  text-align: left;
+}
+#addUserModal .modal-wrapper .modal-content .search-result div.user p.info span.name {
+  display: block;
+  line-height: 30px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #292c33;
+}
+#addUserModal .modal-wrapper .modal-content .search-result div.user p.info span.id {
+  display: block;
+  line-height: 30px;
+  font-size: 16px;
+  color: #45474d;
+}
+#addUserModal .modal-wrapper .modal-content .search-result div.user .schedule-input-wrapper {
+  float: right;
+  margin-top: 10px;
+  position: relative;
+}
+#addUserModal .modal-wrapper .modal-content .search-result div.user .schedule-input-wrapper .schedule-input {
+  float: left;
+  width: 70px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px;
+  text-align: center;
+  text-indent: 0;
+}
+#addUserModal .modal-wrapper .modal-content .search-result div.user .schedule-input-wrapper .schedule-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#addUserModal .modal-wrapper .modal-content .search-result div.user .schedule-input-wrapper span.mark {
+  display: block;
+  float: left;
+  margin-left: 10px;
+  height: 40px;
+  color: #292c33;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 40px;
+}

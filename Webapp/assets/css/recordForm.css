@@ -1,0 +1,144 @@
+@charset "UTF-8";
+
+.wrapper {
+	padding-left: 150px;
+	position: relative;
+	margin-bottom: 50px;
+}
+
+.wrapper>p {
+	font-weight: 600;
+	font-size: 25px;
+	padding-bottom: 35px;
+}
+
+/* 선택 박스 스타일 */
+.box_color {
+	border: 1px solid #292c33;
+	border-radius: 10PX;
+	width: 200px;
+	height: 450px;
+	padding: 10px;
+	line-height: 180%;
+	text-align: center;
+}
+.wrapper ul li:hover {
+	background-color: #979dac;
+	cursor: pointer;
+}
+
+/* 오른쪽 화살표 위치 조정 */
+i.fa-arrow-circle-right {
+	font-size: 40px;
+}
+
+div.fir-arrow {
+	position: absolute;
+	top: 280px;
+	left: 420px;
+}
+
+div.sec-arrow {
+	position: absolute;
+	top: 280px;
+	left: 770px;
+}
+
+/* 선택박스 헤더 스타일 */
+.box_color p {
+	line-height: 200%;
+	font-weight: 600;
+	font-size: 18px;
+	padding-bottom: 5px;
+	margin-bottom: 6px;
+	border-bottom: 1px solid #292c33;
+}
+
+/* 두번째 선택박스 스타일 */
+#second_select {
+	position: absolute;
+	top: 60px;
+	left: 500px;
+	overflow: auto;
+}
+
+/* 세번째 선택박스 스타일 */
+.third_record {
+	position: absolute;
+	top: 60px;
+	left: 850px;
+	width: 260px;
+	height: 450px;
+	overflow: auto;
+}
+.each {
+	position: relative;
+	width: 220px;
+	height: auto;
+	text-align: left;
+	padding: 7px 0px 0px 16px;
+	margin-bottom: 10px;
+}
+i.far {
+	cursor: pointer;
+}
+div.each i {
+	font-size: 20px;
+}
+
+.box_color.each p {
+	float: left;
+	border-bottom: none;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+}
+i.setDelete {
+	position: absolute;
+	top: 5px;
+	right: 30px;
+	opacity: 0;
+}
+
+div.each:hover i.setDelete {
+	transition: all ease 0.5s 0s;
+	opacity: 1;
+}
+/* 아코디언 토글 */
+p.btn_toggle {
+	position: absolute;
+	top: -6px;
+	right: 7px;
+}
+
+/* 스크롤 css */
+::-webkit-scrollbar {
+	width: 5px;
+	border-radius: 3px;
+	background-color: #979dac;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 3px;
+	background-color: #292c33;
+}
+
+.float_wrap {
+	height: 40px;
+}
+
+button.btn_save {
+	position: absolute;
+	top: 0;
+	right: 100px;
+}
+
+.setPart div {
+	margin-bottom: 10px;
+}
+
+.setPart div input{
+	display: inline-block;
+	width: 80px;
+	margin: 0;
+}
+

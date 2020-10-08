@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- icon 사용을 위한 css -->
+    <link rel="stylesheet" href="../assets/css/fontawesome/all.css">
+
+    <!-- 반드시 넣어야 하는 2가지 css -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+
+    <!-- 반드시 넣어야 하는 2가지 js -->
+    <script src="../assets/js/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/modal.js"></script>
+
+    <!-- slide -->
+    <link href="../assets/js/swiper-4.2.6/dist/css/swiper.min.css" rel="stylesheet">
+    <script src="../assets/js/swiper-4.2.6/dist/js/swiper.min.js"></script>
+
+    <!-- 해장 페이지 css -->
+    <link rel="stylesheet" href="../assets/css/mypage.css">
+</head>
+<body>
+    <header id="header">
+        <div class="wrapper clearfix">
+            <h1 class="logo">
+                <a href="../html/index.html">
+                    <img src="../assets/image/logoB.jpeg" title="logo" alt="logo">
+                </a>
+            </h1>
+            <a href="../html/search.html" class="search-link"><i class="fas fa-search"></i></a>
+            <nav id="nav">
+            </nav>
+            <div class="btn-area clearfix">
+                <a href="index.html" class="button sub">로그아웃</a>
+                <a href="trainer_schedule.html" class="button main">마이페이지</a>
+            </div>
+        </div>
+    </header>
+    <!-- header가 필요한 페이지에서 사용 -->
+
+    <div id="container">
+        <div class="summary-wrapper">
+            <div class="summary clearfix">
+                <p class="date">2020년 8월 17일</p>
+                <div class="statistics">
+                    <dl class="review">
+                        <dt>평점</dt>
+                        <dd>4.7점 / 38개</dd>
+                    </dl>
+                    <dl>
+                        <dt>현재 회원 수</dt>
+                        <dd>23명</dd>
+                    </dl>
+                    <dl>
+                        <dt>누적 회원 수</dt>
+                        <dd>120명</dd>
+                    </dl>
+                </div>
+                <div class="schedule-wrapper">
+                    <h3 class="title">오늘의 일정</h3>
+                    <ul class="schedule-list">
+                        <li class="schedule">
+                            <span class="name">김상철 회원님</span>
+                            <span class="time">AM 08:00 - 10:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">정희봉 회원님</span>
+                            <span class="time">AM 10:00 - 11:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">홍길동 회원님</span>
+                            <span class="time">AM 11:00 - 12:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">고구마 회원님</span>
+                            <span class="time">PM 2:00 - 3:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">김구리 회원님</span>
+                            <span class="time">PM 3:00 - 4:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">가나다 회원님</span>
+                            <span class="time">PM 5:00 - 6:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="menu-wrapper">
+            <ul class="menu clearfix">
+                <li><a href="trainer_schedule.html">스케쥴</a></li>
+                <li><a href="exList.html">운동 관리</a></li>
+                <li><a href="userList.html">회원 관리</a></li>
+                <li><a href="trainer_profile.html">프로필</a></li>
+            </ul>
+        </div>
+        <div class="wrapper">
+            <form id="editProfileForm">
+                <div class="main-info clearfix">
+                    <div class="main-info-wrapper clearfix">
+                        <img src="../assets/image/face/Park-Myung- Soo.jpg" class="profile-img">
+                        <button type="button" class="button change-btn">이미지 변경</button>
+                    </div>
+                    <div class="main-info-wrapper">
+                        <h3 class="title">이름</h3>
+                        <input type="text" name="name" value="박명수">
+                    </div>
+                    <div class="main-info-wrapper">
+                        <h3 class="title">소속</h3>
+                        <input type="text" name="belong" value="무한도전 피트니스짐">
+                    </div>
+                </div>
+                <div class="info-wrapper clearfix">
+                    <div class="info">
+                        <h3 class="title">나이</h3>
+                        <input type="number" name="age" value="42">
+                        <h3 class="title" style="margin-top: 20px;">성별</h3>
+                        <div class="radio-wrapper clearfix">
+                            <input type="radio" id="genderMale" name="gender" value="male" checked>
+                            <label for="genderMale">남성</label>
+                            <input type="radio" id="genderFemale" name="gender" value="female">
+                            <label for="genderFemale">여성</label>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <h3 class="title" style="width:240px;">지역</h3>
+                        <select>
+                            <option>전체</option>
+                            <option selected>서울특별시</option>
+                            <option>부산광역시</option>
+                            <option>광주강역시</option>
+                            <option>경기도</option>
+                        </select>
+                        <select>
+                            <option>전체</option>
+                            <option>송파구</option>
+                            <option>구로구</option>
+                            <option selected>서초구</option>
+                            <option>영구</option>
+                        </select>
+                        <select>
+                            <option>전체</option>
+                            <option>송내동</option>
+                            <option>가리봉동</option>
+                            <option selected>홍길동</option>
+                        </select>
+                    </div>
+                    <div class="info">
+                        <h3 class="title">트레이너 경력</h3>
+                        <input type="number" name="career" value="12">
+                    </div>
+                </div>
+                <div class="info-wrapper clearfix">
+                    <div class="category-info">
+                        <h3 class="title">전문분야</h3>
+                        <span class="category">다이어트</span>
+                        <span class="category">재활</span>
+                        <span class="category">프로필 촬영</span>
+                        <select>
+                            <option selected disabled>전문분야 추가하기</option>
+                            <option>재활</option>
+                            <option>기초체력 향상</option>
+                            <option>근력 향상</option>
+                            <option>프로필 촬영</option>
+                            <option>대회 준비</option>
+                            <option>체형 교정</option>
+                        </select>
+                    </div>
+                    <div class="award-info">
+                        <h3 class="title">입상경력</h3>
+                        <span class="award">머슬마니아 3위</span>
+                        <span class="award">전국체전 우수상</span>
+                        <span class="award">체육관 개근상</span>
+                        <span class="award">무사고 12년</span>
+                    </div>
+                </div>
+                <div class="pay-wrapper">
+                    <h3 class="title">비용</h3>
+                    <textarea class="content"
+                              name="pay">10회 이상 신청시 회당 5만원&#10;20회 이상 신청시 회당 4만원&#10;30회 이상 신청 시 회당 3만원</textarea>
+                </div>
+                <div class="comment-wrapper">
+                    <h3 class="title">트레이너 메세지</h3>
+                    <textarea class="content" name="comment">정당은 그 목적·조직과 활동이 민주적이어야 하며, 국민의 정치적 의사형성에 참여하는데 필요한 조직을 가져야 한다. 법관은 탄핵 또는 금고 이상의 형의 선고에 의하지 아니하고는 파면되지 아니하며, 징계처분에 의하지 아니하고는 정직·감봉 기타 불리한 처분을 받지 아니한다.</textarea>
+                </div>
+                <button type="submit" class="button main">저장하기</button>
+            </form>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="wrapper">
+            <ul class="agree clearfix">
+                <li><a href="#none">개인정보처리방침</a></li>
+                <li><a href="#none">이용약관</a></li>
+                <li><a href="#none">이메일무단수집거부</a></li>
+                <li><a href="#none">뉴스레터신청</a></li>
+                <li><a href="#none">사이트맵</a></li>
+            </ul>
+            <address>
+                <p>
+                    <span>피트니스메이트(주)</span>
+                    <span>사업자 등록번호 231-81-24552</span>
+                    <span>대표이사 황예지, 김주혜</span>
+                    <span>주소 서울특별시 동대문구 천호대로 26 (신설동) 효정빌딩</span>
+                </p>
+                <p>
+                    <span class="on">제품관련 고객상담 080-000-0000</span>
+                    <span class="on">웹사이트문의 02-2222-2222</span>
+                    <span>상담시간 평일 09:00~17:30(토, 일요일, 공휴일 휴무)</span>
+                    <span>개인정보 관리책임자 이웅희</span>
+                </p>
+            </address>
+            <p class="right"><span>COPYRIGHT 하이미디어 풀스택과정 C팀.</span> ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+    <!-- footer가 필요한 페이지에서 사용 -->
+</body>
+</html>

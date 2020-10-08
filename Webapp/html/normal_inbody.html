@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- icon 사용을 위한 css -->
+    <link rel="stylesheet" href="../assets/css/fontawesome/all.css">
+
+    <!-- 반드시 넣어야 하는 2가지 css -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+
+    <!-- 반드시 넣어야 하는 2가지 js -->
+    <script src="../assets/js/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/modal.js"></script>
+
+    <!-- slide -->
+    <link href="../assets/js/swiper-4.2.6/dist/css/swiper.min.css" rel="stylesheet">
+    <script src="../assets/js/swiper-4.2.6/dist/js/swiper.min.js"></script>
+
+    <!-- 해당 페이지 css -->
+    <link rel="stylesheet" href="../assets/css/mypage.css">
+<style>
+
+.wrapper {
+	padding-left: 150px;
+	position: relative;
+	margin-bottom: 50px;
+}
+
+.wrapper>p {
+	font-weight: 600;
+	font-size: 25px;
+	padding-bottom: 35px;
+}
+.content-wrapper{
+    height: 550px;
+}
+/* 선택 박스 스타일 */
+.box_color {
+	border: 1px solid #292c33;
+	border-radius: 10PX;
+	width: 200px;
+	height: 450px;
+	padding: 10px;
+	line-height: 180%;
+    text-align: center;
+    overflow: auto;
+    float: left;
+}
+.box_color div{
+    height: 400px;
+    overflow: auto;
+}
+.box_color div ol li:hover {
+	background-color: #979dac;
+	cursor: pointer;
+}
+/* 선택박스 헤더 스타일 */
+.box_color p {
+	line-height: 200%;
+	font-weight: 600;
+	font-size: 18px;
+	padding-bottom: 5px;
+	margin-bottom: 6px;
+	border-bottom: 1px solid #292c33;
+}
+/* 스크롤 css */
+::-webkit-scrollbar {
+	width: 5px;
+	border-radius: 3px;
+	background-color: #979dac;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 3px;
+	background-color: #292c33;
+}
+div.tableBox{
+    margin: 1px 0px 0px 30px;
+    width: 200px;
+	height: 450px;
+    padding: 10px;
+    text-align: center;
+    float: left;
+}
+div.graphBox{
+    width: 500px;
+    height: 400px;
+    background-color: #aaaaaa;
+    margin: 30px 0px 0px 35px;
+    float: left;
+}
+div.content-wrapper table{
+    margin-top: 80px;
+}
+div.content-wrapper table tr th{
+    width: 100px;
+    height: 50px;
+    text-align: right;
+    font-weight: 600;
+}
+div.content-wrapper table tr td input{
+    width: 100px;
+    height: 35px;
+}
+div.content-wrapper table tr td{
+    padding-left: 15px;
+    text-align: left;
+}
+.tableBox p {
+	line-height: 200%;
+	font-weight: 600;
+	font-size: 18px;
+	padding-bottom: 5px;
+	margin-bottom: 13px;
+	border-bottom: 1px solid #292c33;
+}
+
+/* 추가 */
+div.content-wrapper div.recordList{
+    float: left;
+    width: 500px;
+    border: none;
+    margin: 2px 0px 0px 35px;
+}
+
+div.content-wrapper div.recordList table{
+    margin: 20px auto 0px;
+
+}
+
+div.content-wrapper div.recordList table th{
+    background-color: #dadde6;
+    text-align: center;
+    padding-top: 5px;
+    width: 100px;
+}
+
+div.content-wrapper div.recordList table th,td{
+    padding: 4px;
+}
+
+div.content-wrapper div.recordList table td.exTitle{
+    color: #cc2121;
+    font-size: 20px;
+}
+
+div.content-wrapper div.recordList table td{
+    width: 280px;
+}
+
+.box_color ul li:hover {
+	background-color: #dadde6;
+	cursor: pointer;
+}
+
+
+</style>
+
+    <title>write record</title>
+
+</head>
+<body>
+    <header id="header">
+        <div class="wrapper clearfix">
+            <h1 class="logo">
+                <a href="../html/index.html">
+                    <img src="../assets/image/logoB.jpeg" title="logo" alt="logo">
+                </a>
+            </h1>
+            <a href="../html/search.html" class="search-link"><i class="fas fa-search"></i></a>
+            <nav id="nav">
+            </nav>
+            <div class="btn-area clearfix">
+                <a href="index.html" class="button sub">로그아웃</a>
+                <a href="trainer_schedule.html" class="button main">마이페이지</a>
+            </div>
+        </div>
+    </header>
+    <!-- header가 필요한 페이지에서 사용 -->
+
+    <div id="container">
+
+        <div class="summary-wrapper">
+            <div class="summary clearfix">
+                <p class="date">2020년 8월 17일</p>
+                <div class="statistics">
+                    <dl class="review">
+                        <dt>평점</dt>
+                        <dd>4.7점 / 38개</dd>
+                    </dl>
+                    <dl>
+                        <dt>현재 회원 수</dt>
+                        <dd>23명</dd>
+                    </dl>
+                    <dl>
+                        <dt>누적 회원 수</dt>
+                        <dd>120명</dd>
+                    </dl>
+                </div>
+                <div class="schedule-wrapper">
+                    <h3 class="title">오늘의 일정</h3>
+                    <ul class="schedule-list">
+                        <li class="schedule">
+                            <span class="name">김상철 회원님</span>
+                            <span class="time">AM 08:00 - 10:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">정희봉 회원님</span>
+                            <span class="time">AM 10:00 - 11:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">홍길동 회원님</span>
+                            <span class="time">AM 11:00 - 12:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">고구마 회원님</span>
+                            <span class="time">PM 2:00 - 3:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">김구리 회원님</span>
+                            <span class="time">PM 3:00 - 4:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">가나다 회원님</span>
+                            <span class="time">PM 5:00 - 6:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="menu-wrapper">
+            <ul class="menu clearfix">
+                <li><a href="#none">운동내역</a></li>
+                <li><a href="#none">인바디내역</a></li>
+                <li><a href="#none">프로필수정</a></li>
+            </ul>
+        </div>
+        <!-- mypage공용 끝 -->
+        <div class="wrapper content-wrapper">
+            <div id="first_select" class="box_color">
+                <p>운동 날짜</p>
+                <ul>
+                    <!-- 반복시작 -->
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <li>2020-09-10</li>
+                    <!-- 반복시작 -->
+                </ul>
+            </div>
+
+            <div id="second_select" class="box_color recordList">
+                <p>2020-09-10</p>
+                <!-- 반복1 -->
+                <table>
+                    <!-- 반복2 -->
+                    <tr>
+                        <th rowspan="3">부위명</th>
+                        <td class="exTitle">데드리프트 (3 set)</td>
+                    </tr>
+                    <tr>
+                        <td>10(초/kg/lb) 5회</td>
+                    </tr>
+                    <tr>
+                        <td>10(초/kg/lb) 5회</td>
+                    </tr>
+                    <!-- 반복2끝 -->
+                </table>
+
+                <table>
+                    <!-- 반복2 -->
+                    <tr>
+                        <th rowspan="2">부위명</th>
+                        <td class="exTitle">데드리프트 (3 set)</td>
+                    </tr>
+                    <tr>
+                        <td>10(초/kg/lb) 5회</td>
+                    </tr>
+                    <!-- 반복2끝 -->
+                </table>
+                
+                <table>
+                    <!-- 반복2 -->
+                    <tr>
+                        <th rowspan="4">부위명</th>
+                        <td class="exTitle">데드리프트 (3 set)</td>
+                    </tr>
+                    <tr>
+                        <td>10(초/kg/lb) 5회</td>
+                    </tr>
+                    <tr>
+                        <td>10(초/kg/lb) 5회</td>
+                    </tr>
+                    <tr>
+                        <td>10(초/kg/lb) 5회</td>
+                    </tr>
+                    <!-- 반복2끝 -->
+                </table>
+                <!-- 반복1끝 -->
+ 
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="wrapper">
+            <ul class="agree clearfix">
+                <li><a href="#none">개인정보처리방침</a></li>
+                <li><a href="#none">이용약관</a></li>
+                <li><a href="#none">이메일무단수집거부</a></li>
+                <li><a href="#none">뉴스레터신청</a></li>
+                <li><a href="#none">사이트맵</a></li>
+            </ul>
+            <address>
+                <p>
+                    <span>피트니스메이트(주)</span>
+                    <span>사업자 등록번호 231-81-24552</span>
+                    <span>대표이사 황예지, 김주혜</span>
+                    <span>주소 서울특별시 동대문구 천호대로 26 (신설동) 효정빌딩</span>
+                </p>
+                <p>
+                    <span class="on">제품관련 고객상담 080-000-0000</span>
+                    <span class="on">웹사이트문의 02-2222-2222</span>
+                    <span>상담시간 평일 09:00~17:30(토, 일요일, 공휴일 휴무)</span>
+                    <span>개인정보 관리책임자 이웅희</span>
+                </p>
+            </address>
+            <p class="right"><span>COPYRIGHT 하이미디어 풀스택과정 C팀.</span> ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+    <!-- footer가 필요한 페이지에서 사용 -->
+
+</body>
+
+<script type="text/javascript">
+
+
+
+
+</script>
+</html>

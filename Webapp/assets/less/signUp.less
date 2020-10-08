@@ -1,0 +1,243 @@
+@charset "UTF-8";
+@import "import/colorset.less";
+@import "import/modal.less";
+@import "import/variable.less";
+@import "import/mixin.less";
+
+.signUp-wrapper {
+  .img-part {
+    float: right;
+    width: ~"calc(50% + 100px)";
+    height: 700px;
+    background-image: url('../../assets/image/signUp.jpg');
+    background-size: cover;
+    background-position: left top;
+    background-repeat: no-repeat;
+  }
+
+  .signUp-part {
+    float: right;
+    width: 500px;
+    text-align: center;
+    margin-top: 150px;
+
+    a.logo {
+      display: block;
+      width: 220px;
+      margin: 0 auto 30px;
+      img {
+        width: 100%;
+        display: block;
+      }
+    }
+
+    p.title {
+      font-weight: 500;
+      font-size: 20px;
+      margin-bottom: 15px;
+      &.larger {
+        font-size: 40px;
+      }
+    }
+
+    p.guide {
+      line-height: 1.4;
+      &.larger {
+        font-size: 20px;
+      }
+      span.bold {
+        color: @color-sub;
+      }
+    }
+
+
+    form {
+      text-align: center;
+      box-sizing: border-box;
+      padding-top: 30px;
+
+      input {
+        display: none;
+      }
+
+      input[type="radio"]:checked + label {
+        background: #008526;
+        color: #ffffff;
+      }
+
+
+      .button-label {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        width: 120px;
+        cursor: pointer;
+        color: #008526;
+        border: 1px solid #008526;
+        border-radius: 5px;
+        background: #ffffff;
+        transition: 0.3s;
+        user-select: none;
+      }
+    }
+    button.main,
+    a.main {
+      width: 250px;
+      margin: 30px auto 0;
+    }
+  }
+}
+
+form#signInfoForm {
+  width: 360px;
+  margin: 0 auto;
+  padding: 50px 0;
+  p.title{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 40px;
+    margin: 60px 0 40px;
+  }
+  .input-wrapper {
+    position: relative;
+    &.id-wrapper {
+      input[name="userId"] {
+        width: 60%;
+        margin-right: 20px;
+        float: left;
+      }
+      button#idCheck {
+        width: ~"calc(40% - 20px)";
+        float: left;
+        margin: 10px 0 0;
+      }
+      .errMsg, .okMsg, .emtMsg {
+        color: @color-main;
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        font-size: 14px;
+      }
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      height: 40px;
+      margin: 10px 0 30px 0;
+    }
+  }
+  .dropzone-outer-wrapper {
+    margin-top: 20px;
+    .dropzone-inner-wrapper {
+      margin-top: 15px;
+      div.profile-img {
+        float: left;
+        width: 80px;
+        height: 80px;
+        margin-right: 20px;
+        border-radius: 50%;
+        border: 1px solid #cc2121;
+        overflow: hidden;
+        cursor: pointer;
+        .dropzone-previews {
+          display: block;
+          width: 80px;
+          height: 80px;
+        }
+      }
+      button.change-btn {
+        float: left;
+        margin: 20px 0 0;
+        color: #fff;
+        background-color: #cc2121;
+        border: 0;
+      }
+    }
+  }
+  button[type="submit"].main {
+    margin: 50px auto 0;
+    width: 200px;
+  }
+}
+form#signUpServeForm {
+  width: 400px;
+  margin: 0 auto;
+  p.title {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 40px;
+    margin: 60px 0 40px;
+  }
+  a{
+    width: 130px;
+    margin: 20px auto;
+  }
+  input,
+  textarea {
+    margin: 20px 0 30px;
+    &[type="text"] {
+      width: 100%;
+    }
+    &[type="checkbox"]{
+      display: none;
+      padding: 5px 10px;
+      margin: 10px;
+    }
+  }
+  textarea {
+    width: 100%;
+    height: 80px;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  select{
+    display: block;
+    float: left;
+    margin: 10px 20px 30px 0;
+    width: ~"calc( (100% - 40px) / 3 )";
+    height: 40px;
+    &.last {
+      margin-right: 0;
+    }
+  }
+  .button-label {
+    padding: 5px 10px;
+    margin: 10px;
+    background: #dbf2e1;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: 0.3s;
+    user-select: none;
+  }
+  .recordPart {
+    margin-bottom: 30px;
+    >div {
+      width: 100%;
+      position: relative;
+      input[name="careerRecord"]{
+        width: 90%;
+        height: 40px;
+        margin: 10px 0;
+      }
+      i{
+        font-size: 24px;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .checkboxPart{
+    margin: 10px 0 30px -10px;
+    line-height: 45px;
+    word-break: keep-all;
+    input[type="checkbox"]:checked + label {
+      background: #008526;
+      color: #ffffff;
+    }
+  }
+  button[type="submit"] { 
+    width: 250px;
+    margin: 30px auto 30px;
+  }
+}

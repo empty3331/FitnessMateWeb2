@@ -1,0 +1,669 @@
+@charset "UTF-8";
+.modal-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 8000;
+  display: none;
+  transition: opacity 0s;
+  vertical-align: middle;
+}
+.modal-layer::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.funcmodal-layer {
+  overflow-y: auto;
+}
+.funcmodal-wrapper {
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+}
+.funcmodal-wrapper .modal-content {
+  padding: 40px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+/*alert modal*/
+.modal-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+  transform: translateY(-200%);
+  -webkit-transform: translateY(-200%);
+  -ms-transform: translateY(-200%);
+  -o-transform: translateY(-200%);
+  transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  vertical-align: middle;
+}
+.modal-wrapper .modal-content {
+  padding: 40px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.modal-msg {
+  width: 100%;
+  text-align: center;
+}
+.modal-msg .tit {
+  padding: 0 16px;
+  margin: 0;
+  color: #292c33;
+  font-size: 20px;
+  font-weight: 700;
+  word-break: keep-all;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 669px) {
+  .modal-msg .tit {
+    font-size: 16px;
+  }
+}
+.modal-msg p {
+  padding: 0 16px;
+  margin: 14px 0 0;
+  color: #292c33;
+  font-size: 14px;
+  word-break: keep-all;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 669px) {
+  .modal-msg p {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+.modal-msg .title {
+  font-size: 18px;
+  color: #cc2121;
+  margin-bottom: 5px;
+}
+.modal-msg .message {
+  margin-top: 0px;
+}
+.modal-msg .gold {
+  color: #ab876f;
+}
+.modal-btn-area {
+  width: 100%;
+  line-height: 60px;
+  text-align: center;
+  border-top: #292c33;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+}
+.modal-btn-area.full-modal-btn a,
+.modal-btn-area.full-modal-btn button {
+  width: 100%;
+}
+.modal-btn-area a {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.modal-btn-area button {
+  width: 50%;
+  font-size: 16px;
+  line-height: 58px;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+.modal-btn-area .modal-confirm,
+.modal-btn-area .modal-cancel,
+.modal-btn-area .close-modal {
+  width: 50%;
+  float: left;
+  color: #292c33;
+  box-sizing: border-box;
+  background-color: #fff;
+  cursor: pointer;
+}
+.modal-btn-area .modal-confirm.main,
+.modal-btn-area .modal-cancel.main,
+.modal-btn-area .close-modal.main {
+  color: #cc2121;
+}
+.modal-btn-area .modal-confirm.off,
+.modal-btn-area .modal-cancel.off,
+.modal-btn-area .close-modal.off {
+  opacity: 0.5;
+  pointer-events: none;
+}
+#loginModal .modal-wrapper {
+  width: 380px;
+}
+#loginModal .modal-wrapper .modal-content p {
+  font-size: 24px;
+  font-weight: 600;
+}
+#loginModal .modal-wrapper .modal-btn-area table {
+  margin-bottom: 10px;
+}
+#loginModal .modal-wrapper .modal-btn-area table tr th {
+  padding-right: 10px;
+  text-align: right;
+}
+#addScheduleModal .modal-wrapper,
+#modifyScheduleModal .modal-wrapper {
+  width: 400px;
+  text-align: left;
+}
+#addScheduleModal .modal-wrapper .modal-content,
+#modifyScheduleModal .modal-wrapper .modal-content {
+  padding: 20px 20px 0;
+}
+#addScheduleModal .modal-wrapper button.delete-btn,
+#modifyScheduleModal .modal-wrapper button.delete-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 35px;
+  line-height: 35px;
+}
+#addScheduleModal .modal-wrapper select,
+#modifyScheduleModal .modal-wrapper select {
+  width: 80px;
+  height: 35px;
+  display: inline-block !important;
+}
+#addScheduleModal .modal-wrapper input[name="amount"],
+#modifyScheduleModal .modal-wrapper input[name="amount"] {
+  width: 100px;
+}
+#addScheduleModal .modal-wrapper select[name="ptNo"],
+#modifyScheduleModal .modal-wrapper select[name="ptNo"] {
+  width: 200px;
+}
+#addScheduleModal .modal-wrapper select[name="ptNo"].disabled,
+#modifyScheduleModal .modal-wrapper select[name="ptNo"].disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+#addScheduleModal .modal-wrapper .text,
+#modifyScheduleModal .modal-wrapper .text {
+  font-size: 20px;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+#addScheduleModal .modal-wrapper ol,
+#modifyScheduleModal .modal-wrapper ol {
+  margin: 0 30px 0 0;
+  float: left;
+}
+#addScheduleModal .modal-wrapper select[name="hour"],
+#modifyScheduleModal .modal-wrapper select[name="hour"],
+#addScheduleModal .modal-wrapper select[name="minute"],
+#modifyScheduleModal .modal-wrapper select[name="minute"] {
+  margin-top: 10px;
+}
+#addScheduleModal .modal-wrapper .modal-btn-area button,
+#modifyScheduleModal .modal-wrapper .modal-btn-area button {
+  margin-top: 30px;
+}
+/* 이미지 크롭 모달 */
+div.crop-wrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  max-height: 600px;
+  z-index: 20;
+}
+div.crop-wrapper img {
+  max-width: 100%;
+}
+div.crop-wrapper > button {
+  position: absolute;
+  z-index: 2;
+  bottom: 10px;
+  padding: 8px;
+  background-color: #fff;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.crop-wrapper > button.confirm {
+  right: 10px;
+}
+div.crop-wrapper > button.cancel {
+  right: 60px;
+}
+div.crop-wrapper .cropper-wrap-box {
+  background-color: #fff;
+}
+/* import/variable { */
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+#mainBanner {
+  overflow: hidden;
+  position: relative;
+}
+#mainBanner .swiper-wrapper {
+  position: relative;
+}
+#mainBanner .swiper-wrapper .swiper-slide {
+  z-index: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  height: 500px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#searchKeywordForm {
+  margin-top: 100px;
+  position: relative;
+}
+#searchKeywordForm .search-condition {
+  padding-top: 10px;
+}
+#searchKeywordForm .search-condition li {
+  float: left;
+  margin: 0 30px 0 0;
+}
+#searchKeywordForm .search-condition li.local select {
+  width: 120px;
+  float: left;
+  margin-right: 10px;
+}
+#searchKeywordForm button[type='submit'] {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  margin: 0;
+}
+ul.search-list {
+  padding: 30px 0 50px 0;
+}
+ul.search-list li.empty {
+  display: block;
+  width: 100%;
+  height: 100px;
+  position: relative;
+}
+ul.search-list li.empty:after {
+  content: '해당하는 트레이너가 없습니다!';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #292c33;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+ul.search-list li.search-result {
+  float: left;
+  width: calc((100% - 90px)/4);
+  box-sizing: border-box;
+  border: 1px solid #8f98b3;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+ul.search-list li.search-result:not( :nth-child(4n)) {
+  margin-right: 30px;
+}
+ul.search-list li.search-result .image-area {
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+ul.search-list li.search-result .content-area {
+  height: 200px;
+  box-sizing: border-box;
+  padding: 20px;
+  position: relative;
+}
+ul.search-list li.search-result .content-area p.name {
+  color: #292c33;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+ul.search-list li.search-result .content-area p.gym {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  max-width: 150px;
+  font-size: 18px;
+  line-height: 24px;
+  color: #008526;
+  font-weight: 500;
+}
+ul.search-list li.search-result .content-area p.comment {
+  line-height: 1.4;
+  height: 5.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  margin-top: 20px;
+  color: #292c33;
+  font-size: 14px;
+}
+ul.search-list li.search-result .content-area p.score {
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #cc2121;
+}
+ul.search-list li.search-result .content-area p.location {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: #6b7799;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+ul.search-paging {
+  padding-bottom: 30px;
+  text-align: center;
+}
+ul.search-paging li {
+  display: inline;
+  margin: 0 15px;
+  color: #292c33;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  cursor: pointer;
+}
+ul.search-paging li.active {
+  font-size: 18px;
+  font-weight: bold;
+  pointer-events: none;
+}
+ul.search-paging li.off {
+  opacity: 0.3;
+  pointer-events: none;
+}
+#profileModal {
+  overflow: scroll;
+}
+#profileModal .modal-wrapper {
+  margin: 50px auto;
+  position: relative;
+  width: 800px;
+  padding: 30px;
+  overflow: visible;
+  border-radius: 4px;
+}
+#profileModal .modal-wrapper:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 90%;
+  height: 20px;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+}
+#profileModal .modal-wrapper button.close-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border: 0;
+  font-size: 32px;
+  font-weight: 700;
+  outline: none;
+  cursor: pointer;
+}
+#profileModal .modal-wrapper .label-wrapper {
+  position: absolute;
+  left: 0;
+  top: -32px;
+  overflow: hidden;
+  z-index: -1;
+  border-radius: 10px;
+}
+#profileModal .modal-wrapper .label-wrapper button.label-btn {
+  display: block;
+  float: left;
+  width: 100px;
+  height: 40px;
+  background-color: #cc2121;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+#profileModal .modal-wrapper .label-wrapper button.label-btn.on {
+  color: #cc2121;
+  background-color: #fff;
+}
+#profileModal .modal-wrapper .modal-content .label-tab {
+  display: none;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.on {
+  display: block;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper {
+  border: 1px solid #dadde6;
+  background-color: #f0f2f7;
+  padding: 20px;
+  box-sizing: border-box;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper img.profile-img {
+  width: 80px;
+  height: 80px;
+  display: block;
+  float: left;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.summary {
+  float: left;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.summary p.name {
+  color: #292c33;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 40px;
+  text-align: left;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.summary p.belong {
+  color: #008526;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 40px;
+  text-align: left;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.score,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.review,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.contact {
+  float: right;
+  width: 120px;
+  margin-top: 30px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.score p.head,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.review p.head,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.contact p.head {
+  color: #292c33;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.score p.body,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.review p.body,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.contact p.body {
+  color: #cc2121;
+  font-size: 20px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.contact p.head,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .summary-wrapper div.contact p.body {
+  text-align: left;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper {
+  margin-top: 40px;
+  min-height: 110px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .info {
+  float: left;
+  text-align: left;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .info:not(:last-of-type) {
+  margin-right: 100px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .info p.content {
+  color: #292c33;
+  font-size: 16px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .category-info,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .award-info {
+  width: 50%;
+  float: left;
+  text-align: left;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .category-info .category,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .award-info .category,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .category-info .award,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .award-info .award {
+  display: inline-block;
+  min-width: 50px;
+  padding: 0 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .category-info .category:not(:last-of-type),
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .award-info .category:not(:last-of-type),
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .category-info .award:not(:last-of-type),
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .award-info .award:not(:last-of-type) {
+  margin-right: 10px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .category-info .category.category,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .award-info .category.category,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .category-info .award.category,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .award-info .award.category {
+  background-color: #cc2121;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .category-info .category.award,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .award-info .category.award,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .category-info .award.award,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .info-wrapper .award-info .award.award {
+  background-color: #008526;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .pay-wrapper,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .comment-wrapper {
+  text-align: left;
+  margin-top: 40px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .pay-wrapper p.content,
+#profileModal .modal-wrapper .modal-content .label-tab.profile-wrapper .comment-wrapper p.content {
+  box-sizing: border-box;
+  padding: 15px;
+  border-radius: 4px;
+  min-height: 70px;
+  background-color: #f0f2f7;
+  border: 1px solid #dadde6;
+  color: #292c33;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list {
+  text-align: left;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line {
+  border-bottom: 1px solid #a0a0a0;
+  padding: 20px 0 20px 0;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .user-profile {
+  display: inline-block;
+  height: 50px;
+  padding: 0 0 15px 0;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .user-profile .user-profile-img {
+  float: left;
+  height: 50px;
+  width: 50px;
+  border-radius: 70%;
+  margin: 0 10px 0 0;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .user-profile .user-profile-info {
+  padding: 5px 0 0 0;
+  display: inline-block;
+  width: 100px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .user-profile .user-profile-info .user-profile-name {
+  font-weight: bold;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .user-profile .user-profile-info .user-profile-date {
+  font-size: 13px;
+  color: #898989;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .user-profile .user-profile-star {
+  display: inline-block;
+  height: 30px;
+  width: 120px;
+  padding: 0 0 0 100px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .review-btn-area {
+  margin-right: 30px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .box {
+  margin: 10px 0;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .box .content {
+  margin: 10px 0;
+  padding: 0;
+  line-height: 20px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .review-imgSize {
+  height: 100px;
+  width: 100px;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .review-btn-area button.button {
+  float: right;
+  margin: 0 10px 0 0;
+}
+#profileModal .modal-wrapper .modal-content .label-tab.review-wrapper ul.review-list .review-line .review-btn-area button.button:first-of-type {
+  margin-right: 0;
+}

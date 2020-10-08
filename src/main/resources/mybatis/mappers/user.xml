@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+	<select id="selectSameId" parameterType="String" resultType="int">
+		<![CDATA[
+		
+			SELECT count(userNo)
+			FROM users
+			WHERE userId = #{id}
+
+		 ]]>
+	</select>
+	
+	<!-- 주소(도,광역시)가져오기 -->
+	<select id="selectAddress" resultType="String">
+		<![CDATA[
+		
+			SELECT province
+			FROM address
+			GROUP BY province
+			ORDER BY province ASC
+			
+		]]>
+	</select>
+	
+	<!-- 주소(시)가져오기 -->
+	<select id="selectCity" parameterType="String" resultType="String">
+		<![CDATA[
+		
+			SELECT city
+			FROM address
+			WHERE province = #{thisProvince}
+			GROUP BY city
+			ORDER BY city ASC
+			
+		]]>
+	</select>
+	
+	<!-- 주소(동,면,읍)가져오기 -->
+	<select id="selectRegion" parameterType="String" resultType="String">
+		<![CDATA[
+		
+			SELECT region
+			FROM address
+			WHERE city = #{thisCity}
+			GROUP BY region
+			ORDER BY region ASC
+			
+		]]>
+	</select>
+	
+	<!-- 관심분야 가져오기 -->
+	<select id="selectInterestAll" resultType="com.javaex.vo.InterestVo">
+		<![CDATA[
+		
+			SELECT fieldNo, fieldName
+			FROM interest_field
+			ORDER BY fieldNo ASC
+			
+		]]>
+	</select>
+	
+	<!-- 회원 등록 -->
+	<insert id="insertUser" parameterType="com.javaex.vo.UserVo">
+		<selectKey keyProperty="userNo" resultType="int" order="BEFORE">
+			SELECT seq_userNo.nextval FROM dual
+		</selectKey>
+		
+		<![CDATA[
+		
+			INSERT INTO users 
+			VALUES(#{userNo}, #{userId}, #{password}, #{name}, #{gender}, #{phone}, '', #{userType}, #{profileImg}, '', 1, '', '', '', '','')
+
+		 ]]>
+	</insert>
+	
+	<!-- 트레이너 정보 수정 -->
+	<update id="updateTrainerInfo" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+		
+			UPDATE users
+			SET birthDate = #{birthDate},
+			    career = #{career},
+			    location = #{location},
+			    company = #{company},
+				introduction = #{introduction},
+			    price = #{price}
+		]]>
+		
+		<if test = "profileImg != null" >
+		<![CDATA[   
+			    ,profileImg = #{profileImg}
+		]]>		
+		</if>
+		
+		<if test = "name != null" >
+		<![CDATA[   
+				,name = #{name}
+		]]>		
+		</if>
+		
+		<if test = "phone != null" >
+		<![CDATA[   
+				,phone = #{phone}
+		]]>		
+		</if>
+		
+		<if test = "gender != null" >
+		<![CDATA[   
+				,gender = #{gender}
+		]]>		
+		</if>
+		
+		<if test = "workingHours != null" >
+		<![CDATA[   
+				,workingHours = #{workingHours}
+		]]>		
+		</if>
+		
+		<choose>
+			<when test = "invisible != null">
+				<![CDATA[   
+				,invisible = ''
+				]]>		
+			</when>
+			<otherwise>
+				<![CDATA[   
+				,invisible = 'invisible'
+				]]>		
+			</otherwise>
+		</choose>
+		
+		<![CDATA[
+			WHERE userNo = #{userNo}
+		]]>
+	</update>
+	
+	<!-- 일반유저 정보 수정 -->
+	<update id="updateUserInfo" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+		
+			UPDATE users
+			SET name = #{name},
+				phone = #{phone},
+				gender = #{gender},
+			    birthDate = #{birthDate},
+			    career = #{career},
+				introduction = #{introduction},
+				profileImg = #{profileImg}
+			WHERE userNo = #{userNo}
+			
+		]]>
+	</update>
+	
+	<!-- 트레이너 전문분야 쓰기 -->
+	<insert id="insertInterest" parameterType="map">
+		<![CDATA[
+		
+			INSERT into interest_list
+			VALUES(#{userNo}, #{fieldNo})
+			
+		]]>
+	</insert>
+	
+	<!-- 트레이너 수상경력 -->
+	<insert id="insertCareer" parameterType="map">
+		<![CDATA[
+			insert into career_list
+			values(seq_careerNo.nextval, #{userNo}, #{career})
+		]]>
+	</insert>
+	
+	<!-- 로그인 유저 가져오기 -->
+	<select id="selectUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+		
+			SELECT userNo, userId, name, userType
+			FROM users
+			WHERE userId = #{userId}
+			AND password = #{password}
+			
+		]]>
+	</select>
+	
+	<!-- 기본프로필가져오기 -->
+	<select id="selectProfile" parameterType="int" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+		
+			SELECT name, gender, phone, TO_CHAR(birthDate, 'yyyy/mm/dd') "birthDate", introduction, career, location, company, price, profileImg, invisible, workingHours
+			FROM users
+			where userNo = #{userNo}
+		
+		]]>
+	</select>
+	
+	<!-- 프로필 전문분야가져오기 -->
+	<select id="selectUserInterest" parameterType="int" resultType="String">
+		<![CDATA[
+		
+			SELECT fi.fieldname
+			FROM interest_list li, interest_field fi
+			WHERE li.fieldno = fi.fieldno
+			AND userNo = #{userNo}
+		
+		]]>
+	</select>
+	
+	<!-- 프로필 경력상세 가져오기 -->
+	<select id="selectCareerList" parameterType="int" resultType="com.javaex.vo.CareerVo">
+		<![CDATA[
+		
+			SELECT careerNo, recordInfo
+			FROM career_list
+			WHERE userNo = #{userNo}
+		
+		]]>
+	</select>
+	
+	<!-- 전문분야 초기화 -->
+	<delete id="deleteInterest" parameterType="int">
+		<![CDATA[
+		
+			DELETE FROM interest_list
+			WHERE userNo = #{userNo}
+		
+		]]>
+	</delete>
+	
+		<delete id="deleteCareer" parameterType="int">
+		<![CDATA[
+		
+			DELETE FROM career_list
+			WHERE careerno = #{careerNo}
+		
+		]]>
+	</delete>
+	
+</mapper>

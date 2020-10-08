@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="exercise">
+    <select id="showList" resultType="ExVo">
+        <![CDATA[
+            select  partNo as exPartNo,
+                    partName as exPartName
+            from    ex_part
+            order by partNo asc
+        ]]>
+    </select>
+    <select id="getList" parameterType="int" resultType="ExVo">
+        <![CDATA[
+            select  ex.exerciseNo as exNo,
+                    ex.exerciseName as exName,
+                    p.partName as exPartName,
+                    ex.unit as unit
+            from    exercise ex, ex_part p
+            where   ex.trainerNo = #{trainerNo}
+            and     ex.available is null
+            and     ex.exercisepart = p.partNo
+            order by ex.exerciseNo asc
+        ]]>
+    </select>
+    <select id="partList" parameterType="int" resultType="ExVo">
+        <![CDATA[
+            select  exp.exPartNo as exPartNo,
+                    p.partName as exPartName
+            from    ex_part p, (select  exPartNo,
+                                        count(*)
+                                from    (select e.exercisepart as exPartNo
+                                        from    exercise e, ex_part p
+                                        where   e.exercisepart = p.partno and e.trainerno = #{trainerNo})
+                                group by exPartNo
+                                order by exPartNo) exp
+            where   p.partNo = exp.expartno
+        ]]>
+    </select>
+    <select id="selectByPart" parameterType="ExVo" resultType="ExVo">
+        <![CDATA[
+            select  e.exerciseno as exNo,
+                    e.exercisename as exName,
+                    e.unit as unit
+            from    exercise e, ex_part p
+            where   e.exercisepart = p.partNo and e.trainerNo = #{trainerNo} and e.exercisepart = #{exPartNo} and e.available is null
+            order by e.exerciseno asc
+        ]]>
+    </select>
+    <select id="selectByNo" parameterType="int" resultType="ExVo">
+        <![CDATA[
+            select  ex.exerciseNo as exNo,
+                    ex.exerciseName as exName,
+                    p.partName as exPartName,
+                    ex.unit as unit
+            from    exercise ex, ex_part p
+            where   ex.exerciseNo = #{exNo}
+            and     ex.exercisepart = p.partNo
+        ]]>
+    </select>
+    <insert id="insertSelectKey" parameterType="ExVo">
+        <selectKey keyProperty="exNo" resultType="int" order="BEFORE">
+            <![CDATA[
+                select seq_exerciseno.nextVal from dual
+            ]]>
+        </selectKey>
+        <![CDATA[
+            insert into exercise
+            values(#{exNo}, #{trainerNo}, #{exName}, #{exPartNo}, #{unit}, '')
+        ]]>
+    </insert>
+    
+    <update id="delete" parameterType="ExVo">
+        <![CDATA[
+            update exercise
+			set available = 'not use'
+            where exerciseNo = #{exNo} and trainerNo = #{trainerNo}
+        ]]>
+    </update>
+    
+    <select id="selectExDate" parameterType="int" resultType="com.javaex.vo.ScheduleVo">
+        <![CDATA[
+        
+			SELECT TO_CHAR(s.startTime, 'yyyy-mm-dd') startTime, s.scheduleNo
+			FROM schedule s left outer join pt p
+			ON s.ptNo = p.ptNo
+			WHERE p.userNo = #{userNo}
+			AND TO_CHAR(s.startTime, 'yyyymmdd') < TO_CHAR(sysdate, 'yyyymmdd')
+			ORDER by s.startTime desc
+
+        ]]>
+    </select>
+    
+    <select id="selectEx" parameterType="int" resultType="com.javaex.vo.RecordVo">
+        <![CDATA[
+        
+			SELECT distinct exe.exerciseName exName, exe.partName exPart, exe.unit, countS.setCount, exe.startTime
+			FROM
+			(SELECT ex.exerciseName, p.partName, ex.unit, ex.startTime, ex.recordNo
+			FROM ex_part p
+			RIGHT OUTER JOIN (SELECT e.exerciseName, e.exercisePart, e.unit, e.exerciseNo, re.startTime, re.recordNo
+			                    FROM exercise e
+			                    RIGHT OUTER JOIN (SELECT r.exerciseNo, TO_CHAR(s.starttime, 'yyyy-mm-dd') startTime, r.recordNo
+			                                        FROM records r LEFT OUTER JOIN schedule s
+			                                        ON r.scheduleno = s.scheduleno
+			                                        WHERE r.scheduleno = #{scheduleNo}) re
+			                    on e.exerciseNo = re.exerciseNo) ex
+			ON p.partNo = ex.exercisePart
+			ORDER BY ex.recordNo asc) exe, (select e.exerciseName, COUNT(e.exerciseName) setCount
+			                                    FROM exercise e
+			                                    RIGHT OUTER JOIN (SELECT r.exerciseNo
+			                                                        FROM records r LEFT OUTER JOIN schedule s
+			                                                        ON r.scheduleno = s.scheduleno
+			                                                        WHERE r.scheduleno = #{scheduleNo}) re
+			                                    ON e.exerciseNo = re.exerciseNo
+			                                    GROUP BY e.exerciseName) countS
+			WHERE exe.exercisename = counts.exercisename
+
+        ]]>
+    </select>
+    
+	<select id="selectSet" parameterType="map" resultType="com.javaex.vo.RecordVo">
+        <![CDATA[
+        
+				SELECT e.exerciseName exName, re.count, re.amount
+				FROM exercise e RIGHT OUTER JOIN (SELECT r.exerciseNo, r.count, r.amount
+				                                FROM records r left outer join schedule s
+				                                ON r.scheduleno = s.scheduleno
+				                                WHERE r.scheduleno = #{scheduleNo}) re
+				ON e.exerciseNo = re.exerciseNo
+
+        ]]>
+    </select>
+    
+    <select id="myPartList" parameterType="int" resultType="com.javaex.vo.ExerciseVo">
+        <![CDATA[
+        
+			SELECT DISTINCT ex.partName exPartName, ex.partno exPartNo
+			FROM records r, exercise e, ex_part ex, schedule s
+			WHERE r.exerciseno = e.exerciseno
+			AND ex.partNo = e.exercisepart
+			AND r.scheduleno = s.scheduleNo
+			AND ptNo = (SELECT max(ptNo)
+					            FROM pt
+					            WHERE userNo = #{userNo})
+			ORDER BY ex.partName ASC
+
+        ]]>
+    </select>
+    
+    <select id="myExList" parameterType="int" resultType="com.javaex.vo.ExerciseVo">
+        <![CDATA[
+        
+			SELECT DISTINCT e.exercisename exName, e.exerciseNo exNo, ex.partno exPartNo
+			FROM records r, exercise e, ex_part ex, schedule s
+			WHERE r.exerciseno = e.exerciseno
+			AND ex.partNo = e.exercisepart
+			AND r.scheduleno = s.scheduleNo
+			AND ptNo = (SELECT max(ptNo)
+					            FROM pt
+					            WHERE userNo = #{userNo})
+			ORDER BY e.exercisename ASC
+
+        ]]>
+    </select>
+    
+    <select id="selectGraphInfo" parameterType="map" resultType="com.javaex.vo.ExGraphVo">
+        <![CDATA[
+        
+			SELECT MAX(r.amount) maxAmount, MAX(r.count) maxCount, TO_CHAR(s.starttime, 'yyyy-mm-dd') exDate
+			FROM records r, schedule s
+			WHERE s.scheduleno = r.scheduleno
+			AND s.ptno = (SELECT max(ptNo)
+					            FROM pt
+					            WHERE userNo = #{userNo})
+			AND r.exerciseNo = #{exNo}
+			GROUP BY s.startTime
+			ORDER BY s.startTime ASC
+        
+        ]]>
+    </select>
+    
+</mapper>
+
+        <!--
+        <![CDATA[
+        ]]>
+        -->

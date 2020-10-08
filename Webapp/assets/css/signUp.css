@@ -1,0 +1,495 @@
+@charset "UTF-8";
+.modal-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 8000;
+  display: none;
+  transition: opacity 0s;
+  vertical-align: middle;
+}
+.modal-layer::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.funcmodal-layer {
+  overflow-y: auto;
+}
+.funcmodal-wrapper {
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+}
+.funcmodal-wrapper .modal-content {
+  padding: 40px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+/*alert modal*/
+.modal-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+  transform: translateY(-200%);
+  -webkit-transform: translateY(-200%);
+  -ms-transform: translateY(-200%);
+  -o-transform: translateY(-200%);
+  transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  vertical-align: middle;
+}
+.modal-wrapper .modal-content {
+  padding: 40px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.modal-msg {
+  width: 100%;
+  text-align: center;
+}
+.modal-msg .tit {
+  padding: 0 16px;
+  margin: 0;
+  color: #292c33;
+  font-size: 20px;
+  font-weight: 700;
+  word-break: keep-all;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 669px) {
+  .modal-msg .tit {
+    font-size: 16px;
+  }
+}
+.modal-msg p {
+  padding: 0 16px;
+  margin: 14px 0 0;
+  color: #292c33;
+  font-size: 14px;
+  word-break: keep-all;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 669px) {
+  .modal-msg p {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+.modal-msg .title {
+  font-size: 18px;
+  color: #cc2121;
+  margin-bottom: 5px;
+}
+.modal-msg .message {
+  margin-top: 0px;
+}
+.modal-msg .gold {
+  color: #ab876f;
+}
+.modal-btn-area {
+  width: 100%;
+  line-height: 60px;
+  text-align: center;
+  border-top: #292c33;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+}
+.modal-btn-area.full-modal-btn a,
+.modal-btn-area.full-modal-btn button {
+  width: 100%;
+}
+.modal-btn-area a {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.modal-btn-area button {
+  width: 50%;
+  font-size: 16px;
+  line-height: 58px;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+.modal-btn-area .modal-confirm,
+.modal-btn-area .modal-cancel,
+.modal-btn-area .close-modal {
+  width: 50%;
+  float: left;
+  color: #292c33;
+  box-sizing: border-box;
+  background-color: #fff;
+  cursor: pointer;
+}
+.modal-btn-area .modal-confirm.main,
+.modal-btn-area .modal-cancel.main,
+.modal-btn-area .close-modal.main {
+  color: #cc2121;
+}
+.modal-btn-area .modal-confirm.off,
+.modal-btn-area .modal-cancel.off,
+.modal-btn-area .close-modal.off {
+  opacity: 0.5;
+  pointer-events: none;
+}
+#loginModal .modal-wrapper {
+  width: 380px;
+}
+#loginModal .modal-wrapper .modal-content p {
+  font-size: 24px;
+  font-weight: 600;
+}
+#loginModal .modal-wrapper .modal-btn-area table {
+  margin-bottom: 10px;
+}
+#loginModal .modal-wrapper .modal-btn-area table tr th {
+  padding-right: 10px;
+  text-align: right;
+}
+#addScheduleModal .modal-wrapper,
+#modifyScheduleModal .modal-wrapper {
+  width: 400px;
+  text-align: left;
+}
+#addScheduleModal .modal-wrapper .modal-content,
+#modifyScheduleModal .modal-wrapper .modal-content {
+  padding: 20px 20px 0;
+}
+#addScheduleModal .modal-wrapper button.delete-btn,
+#modifyScheduleModal .modal-wrapper button.delete-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 35px;
+  line-height: 35px;
+}
+#addScheduleModal .modal-wrapper select,
+#modifyScheduleModal .modal-wrapper select {
+  width: 80px;
+  height: 35px;
+  display: inline-block !important;
+}
+#addScheduleModal .modal-wrapper input[name="amount"],
+#modifyScheduleModal .modal-wrapper input[name="amount"] {
+  width: 100px;
+}
+#addScheduleModal .modal-wrapper select[name="ptNo"],
+#modifyScheduleModal .modal-wrapper select[name="ptNo"] {
+  width: 200px;
+}
+#addScheduleModal .modal-wrapper select[name="ptNo"].disabled,
+#modifyScheduleModal .modal-wrapper select[name="ptNo"].disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+#addScheduleModal .modal-wrapper .text,
+#modifyScheduleModal .modal-wrapper .text {
+  font-size: 20px;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+#addScheduleModal .modal-wrapper ol,
+#modifyScheduleModal .modal-wrapper ol {
+  margin: 0 30px 0 0;
+  float: left;
+}
+#addScheduleModal .modal-wrapper select[name="hour"],
+#modifyScheduleModal .modal-wrapper select[name="hour"],
+#addScheduleModal .modal-wrapper select[name="minute"],
+#modifyScheduleModal .modal-wrapper select[name="minute"] {
+  margin-top: 10px;
+}
+#addScheduleModal .modal-wrapper .modal-btn-area button,
+#modifyScheduleModal .modal-wrapper .modal-btn-area button {
+  margin-top: 30px;
+}
+/* 이미지 크롭 모달 */
+div.crop-wrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  max-height: 600px;
+  z-index: 20;
+}
+div.crop-wrapper img {
+  max-width: 100%;
+}
+div.crop-wrapper > button {
+  position: absolute;
+  z-index: 2;
+  bottom: 10px;
+  padding: 8px;
+  background-color: #fff;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.crop-wrapper > button.confirm {
+  right: 10px;
+}
+div.crop-wrapper > button.cancel {
+  right: 60px;
+}
+div.crop-wrapper .cropper-wrap-box {
+  background-color: #fff;
+}
+/* import/variable { */
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.signUp-wrapper .img-part {
+  float: right;
+  width: calc(50% + 100px);
+  height: 700px;
+  background-image: url('../../assets/image/signUp.jpg');
+  background-size: cover;
+  background-position: left top;
+  background-repeat: no-repeat;
+}
+.signUp-wrapper .signUp-part {
+  float: right;
+  width: 500px;
+  text-align: center;
+  margin-top: 150px;
+}
+.signUp-wrapper .signUp-part a.logo {
+  display: block;
+  width: 220px;
+  margin: 0 auto 30px;
+}
+.signUp-wrapper .signUp-part a.logo img {
+  width: 100%;
+  display: block;
+}
+.signUp-wrapper .signUp-part p.title {
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.signUp-wrapper .signUp-part p.title.larger {
+  font-size: 40px;
+}
+.signUp-wrapper .signUp-part p.guide {
+  line-height: 1.4;
+}
+.signUp-wrapper .signUp-part p.guide.larger {
+  font-size: 20px;
+}
+.signUp-wrapper .signUp-part p.guide span.bold {
+  color: #008526;
+}
+.signUp-wrapper .signUp-part form {
+  text-align: center;
+  box-sizing: border-box;
+  padding-top: 30px;
+}
+.signUp-wrapper .signUp-part form input {
+  display: none;
+}
+.signUp-wrapper .signUp-part form input[type="radio"]:checked + label {
+  background: #008526;
+  color: #ffffff;
+}
+.signUp-wrapper .signUp-part form .button-label {
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 10px;
+  width: 120px;
+  cursor: pointer;
+  color: #008526;
+  border: 1px solid #008526;
+  border-radius: 5px;
+  background: #ffffff;
+  transition: 0.3s;
+  user-select: none;
+}
+.signUp-wrapper .signUp-part button.main,
+.signUp-wrapper .signUp-part a.main {
+  width: 250px;
+  margin: 30px auto 0;
+}
+form#signInfoForm {
+  width: 360px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+form#signInfoForm p.title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 40px;
+  margin: 60px 0 40px;
+}
+form#signInfoForm .input-wrapper {
+  position: relative;
+}
+form#signInfoForm .input-wrapper.id-wrapper input[name="userId"] {
+  width: 60%;
+  margin-right: 20px;
+  float: left;
+}
+form#signInfoForm .input-wrapper.id-wrapper button#idCheck {
+  width: calc(40% - 20px);
+  float: left;
+  margin: 10px 0 0;
+}
+form#signInfoForm .input-wrapper.id-wrapper .errMsg,
+form#signInfoForm .input-wrapper.id-wrapper .okMsg,
+form#signInfoForm .input-wrapper.id-wrapper .emtMsg {
+  color: #cc2121;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  font-size: 14px;
+}
+form#signInfoForm .input-wrapper input[type="text"],
+form#signInfoForm .input-wrapper input[type="password"] {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0 30px 0;
+}
+form#signInfoForm .dropzone-outer-wrapper {
+  margin-top: 20px;
+}
+form#signInfoForm .dropzone-outer-wrapper .dropzone-inner-wrapper {
+  margin-top: 15px;
+}
+form#signInfoForm .dropzone-outer-wrapper .dropzone-inner-wrapper div.profile-img {
+  float: left;
+  width: 80px;
+  height: 80px;
+  margin-right: 20px;
+  border-radius: 50%;
+  border: 1px solid #cc2121;
+  overflow: hidden;
+  cursor: pointer;
+}
+form#signInfoForm .dropzone-outer-wrapper .dropzone-inner-wrapper div.profile-img .dropzone-previews {
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+form#signInfoForm .dropzone-outer-wrapper .dropzone-inner-wrapper button.change-btn {
+  float: left;
+  margin: 20px 0 0;
+  color: #fff;
+  background-color: #cc2121;
+  border: 0;
+}
+form#signInfoForm button[type="submit"].main {
+  margin: 50px auto 0;
+  width: 200px;
+}
+form#signUpServeForm {
+  width: 400px;
+  margin: 0 auto;
+}
+form#signUpServeForm p.title {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 40px;
+  margin: 60px 0 40px;
+}
+form#signUpServeForm a {
+  width: 130px;
+  margin: 20px auto;
+}
+form#signUpServeForm input,
+form#signUpServeForm textarea {
+  margin: 20px 0 30px;
+}
+form#signUpServeForm input[type="text"],
+form#signUpServeForm textarea[type="text"] {
+  width: 100%;
+}
+form#signUpServeForm input[type="checkbox"],
+form#signUpServeForm textarea[type="checkbox"] {
+  display: none;
+  padding: 5px 10px;
+  margin: 10px;
+}
+form#signUpServeForm textarea {
+  width: 100%;
+  height: 80px;
+  padding: 0;
+  box-sizing: border-box;
+}
+form#signUpServeForm select {
+  display: block;
+  float: left;
+  margin: 10px 20px 30px 0;
+  width: calc( (100% - 40px) / 3 );
+  height: 40px;
+}
+form#signUpServeForm select.last {
+  margin-right: 0;
+}
+form#signUpServeForm .button-label {
+  padding: 5px 10px;
+  margin: 10px;
+  background: #dbf2e1;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: 0.3s;
+  user-select: none;
+}
+form#signUpServeForm .recordPart {
+  margin-bottom: 30px;
+}
+form#signUpServeForm .recordPart > div {
+  width: 100%;
+  position: relative;
+}
+form#signUpServeForm .recordPart > div input[name="careerRecord"] {
+  width: 90%;
+  height: 40px;
+  margin: 10px 0;
+}
+form#signUpServeForm .recordPart > div i {
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+form#signUpServeForm .checkboxPart {
+  margin: 10px 0 30px -10px;
+  line-height: 45px;
+  word-break: keep-all;
+}
+form#signUpServeForm .checkboxPart input[type="checkbox"]:checked + label {
+  background: #008526;
+  color: #ffffff;
+}
+form#signUpServeForm button[type="submit"] {
+  width: 250px;
+  margin: 30px auto 30px;
+}

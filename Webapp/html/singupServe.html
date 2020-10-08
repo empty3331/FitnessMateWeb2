@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- icon 사용을 위한 css -->
+    <link rel="stylesheet" href="../assets/css/fontawesome/all.css">
+
+    <!-- 반드시 넣어야 하는 2가지 css -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+
+    <!-- 반드시 넣어야 하는 2가지 js -->
+    <script src="../assets/js/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/modal.js"></script>
+
+    <!-- slide -->
+    <link href="../assets/js/swiper-4.2.6/dist/css/swiper.min.css" rel="stylesheet">
+    <script src="../assets/js/swiper-4.2.6/dist/js/swiper.min.js"></script>
+
+    <!-- 해당 페이지 css -->
+    <link rel="stylesheet" href="../assets/css/signUpServe.css">
+
+</head>
+<body>
+    <header id="header">
+        <div class="wrapper clearfix">
+            <h1 class="logo">
+                <a href="../html/index.html">
+                    <img src="../assets/image/logoB.jpeg" title="logo" alt="logo">
+                </a>
+            </h1>
+            <a href="../html/search.html" class="search-link"><i class="fas fa-search"></i></a>
+            <nav id="nav">
+            </nav>
+            <div class="btn-area clearfix">
+                <a href="#none" class="button sub">회원가입</a>
+                <a href="index_login.html" class="button main">로그인</a>
+            </div>
+        </div>
+    </header>
+    <!-- header가 필요한 페이지에서 사용 -->
+
+    <div id="container">
+        <div class="wrapper">
+        
+
+            <form class="signup-form" action="#" method="get">
+                <p class="title">추가정보 입력</p>
+
+                <!-- 경력 -->
+                <div class="form-group number">
+                    <div class="age">
+                    <label for="age">나이</label>
+                    <input type="number" name="age" value="1" id ="career">  
+                    </div>
+                    <div class="career">
+                    <label for="career">경력</label>
+                    <input type="number" name="career" value="1" id ="career">
+                    </div>
+                </div>    
+
+                <!-- 지역 -->
+                <div class="form-group">    
+                    <p>지역</p>
+                    <select>
+                        <option>전체</option>
+                        <option>서울특별시</option>
+                        <option>부산광역시</option>
+                        <option>광주강역시</option>
+                        <option>경기도</option>
+                    </select>
+                    <select>
+                        <option>전체</option>
+                        <option>송파구</option>
+                        <option>구로구</option>
+                        <option>서초구</option>
+                        <option>영구</option>
+                    </select>
+                    <select>
+                        <option>전체</option>
+                        <option>송내동</option>
+                        <option>가리봉동</option>
+                        <option>홍길동</option>
+                    </select>
+                </div>     
+                
+                <!-- 소속회사 -->
+                <div class="form-group">                    
+                    <p>소속회사</p>
+                    <input type="text" name="company" placeholder="소속회사를 입력하세요">
+                </div>     
+                
+                <!-- 전문분야 -->
+                <p>전문분야</p>
+                    <div class="checkboxPart">     
+                        
+                        <input type="checkbox" id="physicalPlus" value="physicalPlus" name="field">
+                        <label for="physicalPlus" class="button-label">기초체력향상</label>
+
+                        <input type="checkbox" id="musclePlus" value="musclePlus" name="field">
+                        <label for="musclePlus" class="button-label">근력향상</label>
+
+                        <input type="checkbox" id="loseWeight" value="loseWeight" name="field">
+                        <label for="loseWeight" class="button-label">체중감량</label>
+
+                        <input type="checkbox" id="contest" value="contest" name="field">
+                        <label for="contest" class="button-label">대회준비</label>
+
+                        <input type="checkbox" id="profile" value="profile" name="field">
+                        <label for="profile" class="button-label">프로필촬영</label>
+
+                        <input type="checkbox" id="bodyShape" value="bodyShape" name="field">
+                        <label for="bodyShape" class="button-label">체형교정</label>
+
+                        <input type="checkbox" id="rehabilitation" value="rehabilitation" name="field">
+                        <label for="rehabilitation" class="button-label">재활</label>
+
+                </div>   
+                
+                <!-- 수상내역 -->
+                <div class="recordPart">     
+                    <p>수상내역 / 이수이력</p>
+                    <div>
+                        <input type="text" name="careerRecord" placeholder="대회명(교육명) / 상세내용 ">
+                        <i class="far fa-plus-square"></i>
+                    </div>
+                </div>     
+
+
+                <!-- 가격 -->
+                <div>     
+                    <p>가격</p>
+                    <textarea name=""></textarea>
+                </div>     
+
+                <!-- 자기소개 -->
+                <div>     
+                    <p>자기소개</p>
+                    <textarea name=""></textarea>
+                </div>     
+
+
+            </form> 
+            <a href="#none" class="button main"><i class="fas fa-check-circle"></i> 완료</a>
+        </div>
+        
+    </div>
+
+    <footer id="footer">
+        <div class="wrapper">
+            <ul class="agree clearfix">
+                <li><a href="#none">개인정보처리방침</a></li>
+                <li><a href="#none">이용약관</a></li>
+                <li><a href="#none">이메일무단수집거부</a></li>
+                <li><a href="#none">뉴스레터신청</a></li>
+                <li><a href="#none">사이트맵</a></li>
+            </ul>
+            <address>
+                <p>
+                    <span>피트니스메이트(주)</span>
+                    <span>사업자 등록번호 231-81-24552</span>
+                    <span>대표이사 황예지, 김주혜</span>
+                    <span>주소 서울특별시 동대문구 천호대로 26 (신설동) 효정빌딩</span>
+                </p>
+                <p>
+                    <span class="on">제품관련 고객상담 080-000-0000</span>
+                    <span class="on">웹사이트문의 02-2222-2222</span>
+                    <span>상담시간 평일 09:00~17:30(토, 일요일, 공휴일 휴무)</span>
+                    <span>개인정보 관리책임자 이웅희</span>
+                </p>
+            </address>
+            <p class="right"><span>COPYRIGHT 하이미디어 풀스택과정 C팀.</span> ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+    <!-- footer가 필요한 페이지에서 사용 -->
+
+    
+</body>
+<script>
+
+// +눌렀을 때 수상내역 추가
+$(".fa-plus-square").on("click", function(){
+    var addRecord = '';
+    addRecord += '<div>';
+    addRecord += '    <input type="text" name="careerRecord" placeholder="대회명(교육명) / 상세내용 ">';
+    addRecord += '    <i class="far fa-minus-square"></i>';
+    addRecord += '</div>';
+
+    $(this).closest(".recordPart").append(addRecord);
+});
+// -눌렀을 때 수상내역 삭제
+$(".recordPart").on("click", "i.fa-minus-square",function(){
+    $(this).closest("div").remove();
+});
+
+
+
+
+</script>
+</html>

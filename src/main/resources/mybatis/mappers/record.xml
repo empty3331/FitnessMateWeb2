@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="record">
+    <insert id="insertRecordList" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=" " open="INSERT ALL" close="select * from dual">
+            <![CDATA[
+            into records(recordNo, scheduleNo, exerciseNo, count, amount)
+            values(get_record_seq, ${item.scheduleNo}, ${item.exNo}, ${item.count}, ${item.amount})
+            ]]>
+        </foreach>
+    </insert>
+    <select id="getList" parameterType="int" resultType="RecordVo">
+        <![CDATA[
+            select  exp.partname as exPart,
+                    e.exercisename as exName,
+                    r.amount as amount,
+                    e.unit as unit,
+                    r.count as count,
+                    r.scheduleNo as scheduleNo,
+                    s.startTime as recordDate
+            from    pt p, schedule s, records r, exercise e, ex_part exp
+            where   p.ptno = #{ptNo} and p.ptno = s.ptno and s.scheduleno = r.scheduleno and r.exerciseno = e.exerciseno and e.exercisepart = exp.partno
+            order by r.recordNo asc
+        ]]>
+    </select>
+</mapper>

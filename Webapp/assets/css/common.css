@@ -1,0 +1,473 @@
+@charset "UTF-8";
+.modal-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 8000;
+  display: none;
+  transition: opacity 0s;
+  vertical-align: middle;
+}
+.modal-layer::after {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.funcmodal-layer {
+  overflow-y: auto;
+}
+.funcmodal-wrapper {
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+}
+.funcmodal-wrapper .modal-content {
+  padding: 40px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+/*alert modal*/
+.modal-wrapper {
+  display: inline-block;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 0;
+  width: 320px;
+  min-width: 200px;
+  float: none;
+  transform: translateY(-200%);
+  -webkit-transform: translateY(-200%);
+  -ms-transform: translateY(-200%);
+  -o-transform: translateY(-200%);
+  transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  -webkit-transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  vertical-align: middle;
+}
+.modal-wrapper .modal-content {
+  padding: 40px 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.modal-msg {
+  width: 100%;
+  text-align: center;
+}
+.modal-msg .tit {
+  padding: 0 16px;
+  margin: 0;
+  color: #292c33;
+  font-size: 20px;
+  font-weight: 700;
+  word-break: keep-all;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 669px) {
+  .modal-msg .tit {
+    font-size: 16px;
+  }
+}
+.modal-msg p {
+  padding: 0 16px;
+  margin: 14px 0 0;
+  color: #292c33;
+  font-size: 14px;
+  word-break: keep-all;
+  word-wrap: break-word;
+  box-sizing: border-box;
+}
+@media only screen and (max-width: 669px) {
+  .modal-msg p {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+}
+.modal-msg .title {
+  font-size: 18px;
+  color: #cc2121;
+  margin-bottom: 5px;
+}
+.modal-msg .message {
+  margin-top: 0px;
+}
+.modal-msg .gold {
+  color: #ab876f;
+}
+.modal-btn-area {
+  width: 100%;
+  line-height: 60px;
+  text-align: center;
+  border-top: #292c33;
+  border-radius: 0 0 4px 4px;
+  overflow: hidden;
+}
+.modal-btn-area.full-modal-btn a,
+.modal-btn-area.full-modal-btn button {
+  width: 100%;
+}
+.modal-btn-area a {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.modal-btn-area button {
+  width: 50%;
+  font-size: 16px;
+  line-height: 58px;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+.modal-btn-area .modal-confirm,
+.modal-btn-area .modal-cancel,
+.modal-btn-area .close-modal {
+  width: 50%;
+  float: left;
+  color: #292c33;
+  box-sizing: border-box;
+  background-color: #fff;
+  cursor: pointer;
+}
+.modal-btn-area .modal-confirm.main,
+.modal-btn-area .modal-cancel.main,
+.modal-btn-area .close-modal.main {
+  color: #cc2121;
+}
+.modal-btn-area .modal-confirm.off,
+.modal-btn-area .modal-cancel.off,
+.modal-btn-area .close-modal.off {
+  opacity: 0.5;
+  pointer-events: none;
+}
+#loginModal .modal-wrapper {
+  width: 380px;
+}
+#loginModal .modal-wrapper .modal-content p {
+  font-size: 24px;
+  font-weight: 600;
+}
+#loginModal .modal-wrapper .modal-btn-area table {
+  margin-bottom: 10px;
+}
+#loginModal .modal-wrapper .modal-btn-area table tr th {
+  padding-right: 10px;
+  text-align: right;
+}
+#addScheduleModal .modal-wrapper,
+#modifyScheduleModal .modal-wrapper {
+  width: 400px;
+  text-align: left;
+}
+#addScheduleModal .modal-wrapper .modal-content,
+#modifyScheduleModal .modal-wrapper .modal-content {
+  padding: 20px 20px 0;
+}
+#addScheduleModal .modal-wrapper button.delete-btn,
+#modifyScheduleModal .modal-wrapper button.delete-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 35px;
+  line-height: 35px;
+}
+#addScheduleModal .modal-wrapper select,
+#modifyScheduleModal .modal-wrapper select {
+  width: 80px;
+  height: 35px;
+  display: inline-block !important;
+}
+#addScheduleModal .modal-wrapper input[name="amount"],
+#modifyScheduleModal .modal-wrapper input[name="amount"] {
+  width: 100px;
+}
+#addScheduleModal .modal-wrapper select[name="ptNo"],
+#modifyScheduleModal .modal-wrapper select[name="ptNo"] {
+  width: 200px;
+}
+#addScheduleModal .modal-wrapper select[name="ptNo"].disabled,
+#modifyScheduleModal .modal-wrapper select[name="ptNo"].disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+#addScheduleModal .modal-wrapper .text,
+#modifyScheduleModal .modal-wrapper .text {
+  font-size: 20px;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+#addScheduleModal .modal-wrapper ol,
+#modifyScheduleModal .modal-wrapper ol {
+  margin: 0 30px 0 0;
+  float: left;
+}
+#addScheduleModal .modal-wrapper select[name="hour"],
+#modifyScheduleModal .modal-wrapper select[name="hour"],
+#addScheduleModal .modal-wrapper select[name="minute"],
+#modifyScheduleModal .modal-wrapper select[name="minute"] {
+  margin-top: 10px;
+}
+#addScheduleModal .modal-wrapper .modal-btn-area button,
+#modifyScheduleModal .modal-wrapper .modal-btn-area button {
+  margin-top: 30px;
+}
+/* 이미지 크롭 모달 */
+div.crop-wrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 800px;
+  max-height: 600px;
+  z-index: 20;
+}
+div.crop-wrapper img {
+  max-width: 100%;
+}
+div.crop-wrapper > button {
+  position: absolute;
+  z-index: 2;
+  bottom: 10px;
+  padding: 8px;
+  background-color: #fff;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.crop-wrapper > button.confirm {
+  right: 10px;
+}
+div.crop-wrapper > button.cancel {
+  right: 60px;
+}
+div.crop-wrapper .cropper-wrap-box {
+  background-color: #fff;
+}
+/* import/variable { */
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+* {
+  color: #292c33;
+}
+textarea {
+  resize: vertical;
+}
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 669px) {
+  .wrapper {
+    width: 360px;
+  }
+}
+body.scroll {
+  height: 100%;
+  overflow-y: scroll;
+}
+body.no-scroll {
+  height: 100vh;
+  overflow-y: hidden;
+}
+input[type="text"],
+input[type="password"],
+input[type="number"],
+select {
+  display: block;
+  width: 240px;
+  height: 30px;
+  margin: 0 0 15px;
+  box-sizing: border-box;
+  border: 1px solid #292c33;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 30px;
+  text-indent: 10px;
+}
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+select:focus,
+input[type="text"]:active,
+input[type="password"]:active,
+input[type="number"]:active,
+select:active {
+  outline: none;
+}
+select {
+  width: 150px;
+}
+a.button,
+button.button {
+  display: block;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #292c33;
+  min-width: 100px;
+  height: 40px;
+  padding: 0 15px;
+  margin: 0 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+a.button.main,
+button.button.main {
+  color: #cc2121;
+  border: 1px solid #cc2121;
+}
+a.button.main:hover,
+button.button.main:hover {
+  color: #fff;
+  background-color: #cc2121;
+  transition: all 0.3s;
+}
+a.button.sub,
+button.button.sub {
+  color: #008526;
+  border: 1px solid #008526;
+}
+a.button.sub:hover,
+button.button.sub:hover {
+  color: #fff;
+  background-color: #008526;
+  transition: all 0.3s;
+}
+h3.title {
+  font-size: 20px;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+.radio-wrapper input[type='radio'] {
+  cursor: pointer;
+}
+.radio-wrapper label {
+  padding: 0 10px 0 5px;
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+.radio-wrapper input[type='radio']:checked + label {
+  font-weight: 700;
+}
+#header {
+  position: fixed;
+  padding: 15px 0;
+  width: 100%;
+  z-index: 2;
+  -webkit-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  background-color: #fff;
+}
+#header h1.logo {
+  float: left;
+}
+#header h1.logo a {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+#header h1.logo a img {
+  height: 50px;
+  display: block;
+}
+#header a.search-link {
+  display: block;
+  float: left;
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+#header a.search-link i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+}
+#header .btn-area {
+  float: right;
+  height: 50px;
+}
+#header .btn-area a.button {
+  float: left;
+  margin: 5px 0 0 0;
+}
+#header .btn-area a.button:last-of-type {
+  margin-left: 20px;
+}
+#container {
+  padding-top: 81px;
+  position: relative;
+  z-index: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+#container.no-header {
+  padding-top: 0;
+}
+#footer {
+  padding: 40px 0;
+  background-color: #f0f2f7;
+}
+#footer ul.agree {
+  text-align: center;
+  margin-bottom: 40px;
+}
+#footer ul.agree li {
+  display: inline-block;
+  margin: 0 30px;
+}
+#footer ul.agree li a {
+  text-decoration: none;
+}
+#footer address {
+  font-style: normal;
+}
+#footer address p {
+  margin-bottom: 15px;
+  text-align: center;
+}
+#footer address p span {
+  margin-right: 15px;
+  position: relative;
+}
+#footer address p span:not( :nth-of-type(4)):after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 13px;
+  background: #999;
+  position: absolute;
+  right: -10px;
+  top: 7px;
+}
+#footer p.right {
+  text-align: center;
+}

@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- icon 사용을 위한 css -->
+    <link rel="stylesheet" href="../assets/css/fontawesome/all.css">
+
+    <!-- 반드시 넣어야 하는 2가지 css -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+
+    <!-- 반드시 넣어야 하는 2가지 js -->
+    <script src="../assets/js/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/modal.js"></script>
+
+    <!-- slide -->
+    <link href="../assets/js/swiper-4.2.6/dist/css/swiper.min.css" rel="stylesheet">
+    <script src="../assets/js/swiper-4.2.6/dist/js/swiper.min.js"></script>
+
+    <!-- 해당 페이지 css -->
+    <link rel="stylesheet" href="../assets/css/mypage.css">
+
+
+    <!-- calendar css/js -->
+    <link href='../assets/js/calendar/main.css' rel='stylesheet'>
+    <script src='../assets/js/calendar/main.js'></script>
+    <script src='../assets/js/calendar/theme-chooser.js'></script>
+
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar;
+
+            initThemeChooser({
+
+                init: function (themeSystem) {
+                    calendar = new FullCalendar.Calendar(calendarEl, {
+                        themeSystem: themeSystem,
+                        headerToolbar: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                        },
+                        initialDate: '2020-08-12',
+                        weekNumbers: false,
+                        navLinks: true, // can click day/week names to navigate views
+                        editable: false,
+                        selectable: true,
+                        nowIndicator: true,
+                        dayMaxEvents: false, // allow "more" link when too many events
+                        // showNonCurrentDates: false,
+                        dateClick: function (info) {
+                            //TODO - 날짜 클릭시 발생 이벤트
+                            showModal("#addModal");
+
+                        },
+                        eventClick: function (info) {
+                            //TODO - 일정 클릭시 발생 이벤트
+                            event.stopPropagation();
+                            $(".btn_pop").remove();
+                            $(info.el).append(
+                                "<div class='btn_pop'>" +
+                                "<button type='button' class='button btn_modify' onclick='btnModify();'>스케쥴변경</button>" +
+                                "<button type='button' class='button' onclick='startExercise();'>운동시작</button>" +
+                                "<div>"
+                            );
+                        },
+                        height: 'auto',
+                        overflow: 'visible',
+                        events: [
+                            {
+                                title: '김영희 님',
+                                start: '2020-08-01T09:00'
+                            },
+                            {
+                                title: '김철수 님',
+                                start: '2020-08-01T11:00'
+                            },
+                            {
+                                title: '이영희 님',
+                                start: '2020-08-01T14:00'
+                            },
+                            {
+                                title: '박철민 님',
+                                start: '2020-08-01T16:00'
+                            },
+                            {
+                                title: '황정민 님',
+                                start: '2020-08-01T191:00'
+                            },
+                            {
+                                title: '김영희 님',
+                                start: '2020-08-02T09:00'
+                            },
+                            {
+                                title: '김철수 님',
+                                start: '2020-08-02T11:00'
+                            },
+                            {
+                                title: '이영희 님',
+                                start: '2020-08-02T14:00'
+                            },
+                            {
+                                title: '김영희 님',
+                                start: '2020-08-05T09:00'
+                            },
+                            {
+                                title: '김영희 님',
+                                start: '2020-08-11T09:00'
+                            },
+                            {
+                                title: '김영희 님',
+                                start: '2020-08-17T09:00'
+                            },
+                            {
+                                title: '김철수 님',
+                                start: '2020-08-17T11:00'
+                            },
+                            {
+                                title: '이영희 님',
+                                start: '2020-08-17T14:00'
+                            },
+                            {
+                                title: '박철민 님',
+                                start: '2020-08-17T16:00'
+                            },
+                        ]
+                    });
+                    calendar.render();
+
+
+                },
+
+                change: function (themeSystem) {
+                    calendar.setOption('themeSystem', themeSystem);
+                }
+
+            });
+
+        });
+
+    </script>
+    <style>
+
+        #top {
+            display: none;
+        }
+
+        #top .selector {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        #top select {
+            font: inherit; /* mock what Boostrap does, don't compete  */
+        }
+
+        .left {
+            float: left
+        }
+
+        .right {
+            float: right
+        }
+
+        .clear {
+            clear: both
+        }
+
+        #calendar {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 10px;
+            overflow: visible;
+        }
+
+        button.btn-primary {
+            margin: 0;
+            min-width: 0;
+            width: 80px;
+        }
+
+        button.fc-prev-button, button.fc-next-button {
+            min-width: 0;
+            width: 50px;
+        }
+
+        button.fc-today-button {
+            min-width: 0;
+            display: inline-block;
+        }
+
+        td.fc-daygrid-day {
+            position: relative;
+        }
+
+        td.fc-daygrid-day:after {
+            content: '+';
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            width: 24px;
+            height: 24px;
+            line-height: 20px;
+            text-align: center;
+            font-size: 24px;
+            color: gray;
+            opacity: 0;
+            cursor: pointer;
+            border: 1px solid gray;
+        }
+
+        td.fc-daygrid-day:hover:after {
+            transition: all ease 0.7s 0s;
+            opacity: 1;
+        }
+
+        .fc a.fc-daygrid-day-number {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .modal-wrapper {
+            width: 400px;
+            text-align: left;
+        }
+
+        select {
+            width: 80px;
+            height: 35px;
+            display: inline-block !important;
+        }
+
+        select[name="user_name"] {
+            width: 200px;
+            margin-left: 30px;
+        }
+
+        .text {
+            font-size: 20px;
+            margin: 0 0 10px;
+            font-weight: 700;
+        }
+
+        ol {
+            margin: 0px 30px 0px 30px;
+            float: left;
+        }
+
+        select[name="hour"], select[name="minute"] {
+            margin-top: 10px;
+        }
+
+        p.text {
+            margin-left: 30px;
+        }
+
+        .modal-wrapper .modal-btn-area button {
+            margin-top: 30px;
+        }
+
+        .modal-wrapper .modal-content {
+            padding-bottom: 0px;
+        }
+
+        .fc-daygrid-day-events {
+            padding-top: 30px;
+        }
+
+        table tbody td.fc-day {
+            height: 180px;
+        }
+
+        .btn_pop {
+            position: absolute;
+            z-index: 999;
+            top: -60px;
+            right: -80px;
+            background-color: #fff;
+            border: 1px solid #292c33;
+            -webkit-transform: translate3d(0, 0, 0);
+            -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+        }
+
+        .btn_pop button.button {
+            border-radius: 0;
+            margin: 0;
+            width: 120px;
+            border: 0;
+        }
+        .btn_pop button.button:hover {
+            background-color: #dadde6;
+        }
+
+        .fc .fc-scroller-harness {
+            overflow: visible;
+        }
+
+
+    </style>
+    <title>write record</title>
+
+</head>
+<body>
+    <header id="header">
+        <div class="wrapper clearfix">
+            <h1 class="logo">
+                <a href="../html/index.html">
+                    <img src="../assets/image/logoB.jpeg" title="logo" alt="logo">
+                </a>
+            </h1>
+            <a href="../html/search.html" class="search-link"><i class="fas fa-search"></i></a>
+            <nav id="nav">
+            </nav>
+            <div class="btn-area clearfix">
+                <a href="index.html" class="button sub">로그아웃</a>
+                <a href="trainer_schedule.html" class="button main">마이페이지</a>
+            </div>
+        </div>
+    </header>
+    <!-- header가 필요한 페이지에서 사용 -->
+
+    <div id="container">
+
+        <div class="summary-wrapper">
+            <div class="summary clearfix">
+                <p class="date">2020년 8월 17일</p>
+                <div class="statistics">
+                    <dl class="review">
+                        <dt>평점</dt>
+                        <dd>4.7점 / 38개</dd>
+                    </dl>
+                    <dl>
+                        <dt>현재 회원 수</dt>
+                        <dd>23명</dd>
+                    </dl>
+                    <dl>
+                        <dt>누적 회원 수</dt>
+                        <dd>120명</dd>
+                    </dl>
+                </div>
+                <div class="schedule-wrapper">
+                    <h3 class="title">오늘의 일정</h3>
+                    <ul class="schedule-list">
+                        <li class="schedule">
+                            <span class="name">김상철 회원님</span>
+                            <span class="time">AM 08:00 - 10:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">정희봉 회원님</span>
+                            <span class="time">AM 10:00 - 11:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">홍길동 회원님</span>
+                            <span class="time">AM 11:00 - 12:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">고구마 회원님</span>
+                            <span class="time">PM 2:00 - 3:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">김구리 회원님</span>
+                            <span class="time">PM 3:00 - 4:00</span>
+                        </li>
+                        <li class="schedule">
+                            <span class="name">가나다 회원님</span>
+                            <span class="time">PM 5:00 - 6:00</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+        <div class="menu-wrapper">
+            <ul class="menu clearfix">
+                <li><a href="trainer_schedule.html">스케쥴</a></li>
+                <li><a href="exList.html">운동 관리</a></li>
+                <li><a href="userList.html">회원 관리</a></li>
+                <li><a href="trainer_profile.html">프로필</a></li>
+            </ul>
+        </div>
+        <!-- mypage공용 -->
+        <div id='top'>
+
+            <div class='left'>
+
+                <div id='theme-system-selector' class='selector'>
+                    Theme System:
+
+                    <select>
+                        <option value='bootstrap' selected>Bootstrap 4</option>
+                        <option value='standard'>unthemed</option>
+                    </select>
+                </div>
+
+                <div data-theme-system="bootstrap" class='selector' style='display:none'>
+                    Theme Name:
+
+                    <select>
+                        <option value='' selected>Default</option>
+                        <option value='cerulean'>Cerulean</option>
+                        <option value='cosmo'>Cosmo</option>
+                        <option value='cyborg'>Cyborg</option>
+                        <option value='darkly'>Darkly</option>
+                        <option value='flatly'>Flatly</option>
+                        <option value='journal'>Journal</option>
+                        <option value='litera'>Litera</option>
+                        <option value='lumen'>Lumen</option>
+                        <option value='lux'>Lux</option>
+                        <option value='materia'>Materia</option>
+                        <option value='minty'>Minty</option>
+                        <option value='pulse'>Pulse</option>
+                        <option value='sandstone'>Sandstone</option>
+                        <option value='simplex'>Simplex</option>
+                        <option value='sketchy'>Sketchy</option>
+                        <option value='slate'>Slate</option>
+                        <option value='solar'>Solar</option>
+                        <option value='spacelab'>Spacelab</option>
+                        <option value='superhero'>Superhero</option>
+                        <option value='united'>United</option>
+                        <option value='yeti'>Yeti</option>
+                    </select>
+                </div>
+
+                <span id='loading' style='display:none'>loading theme...</span>
+
+            </div>
+
+            <div class='right'>
+      <span class='credits' data-credit-id='bootstrap-standard' style='display:none'>
+        <a href='https://getbootstrap.com/docs/3.3/' target='_blank'>Theme by Bootstrap</a>
+      </span>
+                <span class='credits' data-credit-id='bootstrap-custom' style='display:none'>
+        <a href='https://bootswatch.com/' target='_blank'>Theme by Bootswatch</a>
+      </span>
+            </div>
+
+            <div class='clear'></div>
+        </div>
+
+        <div id='calendar'></div>
+
+    </div>
+
+    <footer id="footer">
+        <div class="wrapper">
+            <ul class="agree clearfix">
+                <li><a href="#none">개인정보처리방침</a></li>
+                <li><a href="#none">이용약관</a></li>
+                <li><a href="#none">이메일무단수집거부</a></li>
+                <li><a href="#none">뉴스레터신청</a></li>
+                <li><a href="#none">사이트맵</a></li>
+            </ul>
+            <address>
+                <p>
+                    <span>피트니스메이트(주)</span>
+                    <span>사업자 등록번호 231-81-24552</span>
+                    <span>대표이사 황예지, 김주혜</span>
+                    <span>주소 서울특별시 동대문구 천호대로 26 (신설동) 효정빌딩</span>
+                </p>
+                <p>
+                    <span class="on">제품관련 고객상담 080-000-0000</span>
+                    <span class="on">웹사이트문의 02-2222-2222</span>
+                    <span>상담시간 평일 09:00~17:30(토, 일요일, 공휴일 휴무)</span>
+                    <span>개인정보 관리책임자 이웅희</span>
+                </p>
+            </address>
+            <p class="right"><span>COPYRIGHT 하이미디어 풀스택과정 C팀.</span> ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+    <!-- footer가 필요한 페이지에서 사용 -->
+
+    <!-- 이하 모달입니다 -->
+    <div class="modal-layer" id="addModal">
+        <div class="modal-wrapper">
+            <form action="" method="">
+                <div class="modal-content">
+                    <div class="select01">
+                        <p class="text">시작시간</p>
+                        <ol>
+                            <li>
+                                <input type="radio" id="startAm" name="startTime" value="am">
+                                <label for="startAm">AM</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="startPm" name="startTime" value="pm">
+                                <label for="startPm">PM</label>
+                            </li>
+                        </ol>
+                        <select name="hour">
+                            <option value="">시간</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <select name="minute">
+                            <option value="">분</option>
+                            <option value="00">00</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="text">종료시간</p>
+                        <ol>
+                            <li>
+                                <input type="radio" id="endAm" name="endTime" value="am">
+                                <label for="endAm">AM</label>
+                            </li>
+                            <li>
+                                <input type="radio" id="endPm" name="endTime" value="pm">
+                                <label for="endPm">PM</label>
+                            </li>
+                        </ol>
+                        <select name="hour">
+                            <option value="">시간</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <select name="minute">
+                            <option value="">분</option>
+                            <option value="00">00</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                            <option value="50">50</option>
+                        </select>
+                    </div>
+                    <div>
+                        <p class="text">회원이름</p>
+                        <select name="user_name">
+                            <option value="">회원이름</option>
+                            <option value="">김영희(rladudgml)</option>
+                            <option value="">김철수(rlacjftn)</option>
+                            <option value="">이영희(dldudgml)</option>
+                            <option value="">황정민(ghkdwjdals)</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-btn-area">
+                <button type="button" class="modal-cancel" onclick="forceHideModal('#addModal')">취소</button>
+                <button type="button" class="modal-confirm" onclick="forceHideModal('#addModal')">확인</button>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <script>
+        $(document).ready(function () {
+            //화면 아무곳이나 클릭시 스케쥴 팝업 제거
+            $(window).on("click",function () {
+                $(".btn_pop").remove();
+
+            });
+        });//레디함수종료
+
+        function btnModify() {
+            $("select[name='hour']").find("option[value='9']").prop("selected", true);
+            showModal("#addModal");
+        }
+
+        function startExercise() {
+            location.href="recordForm.html";
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="schedule">
+    <insert id="insert" parameterType="ScheduleVo">
+        <![CDATA[
+            insert into schedule
+            values(seq_scheduleNo.nextVal, #{ptNo}, #{state}, '', to_date(#{startTime}, 'yyyy-mm-dd hh24:mi') , to_date(#{startTime}, 'yyyy-mm-dd hh24:mi') + #{amount}/(24*60))
+        ]]>
+    </insert>
+    
+    <select id="selectList" parameterType="int" resultType="ScheduleVo">
+        <![CDATA[
+            select  u.userId as userId,
+                    u.name as userName,
+                    s.scheduleNo as scheduleNo,
+                    s.ptNo as ptNo,
+                    s.memo as memo,
+                    s.state as state,
+                    to_char(s.startTime, 'yyyy-mm-dd hh24:mi') as startTime,
+                    to_char(s.endTime, 'yyyy-mm-dd hh24:mi') as endTime,
+                    round((s.endtime - s.startTime) * 1440) as amount
+            from    schedule s, pt p, users u
+            where   p.ptNo = s.ptNo and p.trainerNo = #{trainerNo} and p.userno = u.userno
+        ]]>
+    </select>
+    
+    <select id="selectByVo" parameterType="ScheduleVo" resultType="ScheduleVo">
+        <![CDATA[
+            select  u.userId as userId,
+                    u.name as userName,
+                    s.scheduleNo as scheduleNo,
+                    s.ptNo as ptNo,
+                    s.memo as memo,
+                    s.state as state,
+                    to_char(s.startTime, 'yyyy-mm-dd hh24:mi') as startTime,
+                    to_char(s.endTime, 'yyyy-mm-dd hh24:mi') as endTime,
+                    round((s.endtime - s.startTime) * 1440) as amount
+            from    schedule s, pt p, users u
+            where   p.ptNo = s.ptNo and p.trainerNo = #{trainerNo} and p.userno = u.userno and s.scheduleNo = #{scheduleNo}
+        ]]>
+    </select>
+    <update id="update" parameterType="ScheduleVo">
+        <![CDATA[
+            update  schedule
+            set     ptNo = #{ptNo}, state = #{state}, memo = '', startTime = to_date(#{startTime}, 'yyyy-mm-dd hh24:mi'), endTime = to_date(#{startTime}, 'yyyy-mm-dd hh24:mi') + #{amount}/(24*60)
+            where   scheduleNo = #{scheduleNo}
+        ]]>
+    </update>
+
+    <update id="changeScheduleState" parameterType="ScheduleVo">
+        <![CDATA[
+            update  schedule
+            set     state = #{state}
+            where   scheduleNo = #{scheduleNo}
+        ]]>
+    </update>
+
+
+
+    <delete id="delete" parameterType="ScheduleVo">
+        <![CDATA[
+            delete from  schedule
+            where   scheduleNo = #{scheduleNo}
+        ]]>
+    </delete>
+    
+    <select id="countAll" parameterType="int" resultType="int">
+        <![CDATA[
+			SELECT COUNT(ptNo)
+			FROM pt
+			WHERE trainerNo = #{trainerNo}
+        ]]>
+    </select>
+    
+	<select id="countCurrent" parameterType="int" resultType="int">
+        <![CDATA[
+        
+			SELECT COUNT(p.ptNo)
+			FROM pt p LEFT OUTER JOIN (SELECT ptNo, COUNT(scheduleNo) scheduleCount
+						            	FROM schedule GROUP BY ptNo) c
+			ON p.ptNo = c.ptNo
+			WHERE p.trainerNo = #{trainerNo}
+			AND p.endDate >= SYSDATE
+			AND p.regCount >= c.scheduleCount
+
+        ]]>
+    </select>
+
+	<select id="getReviewCount" parameterType="int" resultType="com.javaex.vo.SummaryVo">
+        <![CDATA[
+        
+			SELECT ROUND(AVG(NVL(r.score, 0)),1) avgScore, count(r.reviewNo) reviewCount
+			FROM review r left outer join pt p
+			ON p.ptNo = r.ptno
+			WHERE trainerNo = #{trainerNo}
+			AND r.order_no = 1
+			
+        ]]>
+    </select>
+
+	<select id="getTodaySchedule" parameterType="int" resultType="ScheduleVo">
+        <![CDATA[
+        
+			SELECT u.name userName, info.startTime startTime, info.endtime endtime
+			FROM users u RIGHT OUTER JOIN 
+			    (SELECT p.userNo, TO_CHAR(s.startTime, 'AM hh:mi', 'NLS_DATE_LANGUAGE=ENGLISH') startTime, TO_CHAR(s.endtime, 'hh:mi') endtime
+			    FROM schedule s LEFT OUTER JOIN pt p
+			    ON s.ptno = p.ptno
+			    WHERE TO_CHAR(s.startTime, 'yy/mm/dd') = TO_CHAR(sysdate, 'yy/mm/dd')
+			    AND p.trainerNo = #{trainerNo}) info
+			ON u.userNo = info.userNo
+			
+        ]]>
+    </select>
+     
+</mapper>
+
+        <!--
+        <![CDATA[
+        ]]>
+        -->

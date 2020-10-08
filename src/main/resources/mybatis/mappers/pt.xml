@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pt">
+
+	<!-- 회원리스트 가져오기 -->
+	<select id="selectTraineeList" parameterType="int" resultType="com.javaex.vo.PtVo">
+		<![CDATA[
+		
+			SELECT
+			    pt.ptNo, u.userNo, u.userId, u.name, to_char(pt.endDate, 'yyyymmdd') intEndDate, pt.regcount, NVL(pt.schedulecount, 0) schedulecount, u.profileImg profileImg
+			FROM
+			    users u,
+			    (SELECT
+			        p.ptNo, p.userNo, p.endDate,
+			        p.regCount, s.schedulecount
+			    FROM pt p LEFT OUTER JOIN
+			            (SELECT ptNo, COUNT(scheduleNo) scheduleCount
+			            FROM schedule
+			            group by ptNo) s
+			    ON p.ptno = s.ptno
+			    WHERE p.trainerno = #{trainerNo}) pt
+			WHERE u.userNo = pt.userno
+			ORDER BY u.name ASC
+
+		 ]]>
+	</select>
+	
+	<!-- pt정보 가져오기 -->
+	<select id="selectPtInfo" parameterType="int" resultType="com.javaex.vo.PtVo">
+		<![CDATA[
+		
+			SELECT
+			    pt.ptNo, u.userNo, u.userId, u.name, u.gender, u.phone,
+			    to_char(pt.endDate, 'yyyymmdd') intEndDate,
+			    to_char(pt.startdate, 'yyyy-mm-dd') startDate,
+			    to_char(pt.endDate, 'yyyy-mm-dd') endDate,
+			    pt.regcount, NVL(pt.schedulecount, 0) scheduleCount, NVL(pt.memo, ' ') memo,
+			    u.profileImg profileImg
+			FROM
+			    users u,
+			    (SELECT
+			        p.ptNo, p.userNo, p.startdate,
+			        p.endDate, p.regCount, s.schedulecount, p.memo
+			    FROM pt p LEFT OUTER JOIN
+			            (SELECT ptNo, COUNT(scheduleNo) scheduleCount
+			            FROM schedule
+			            group by ptNo) s
+			    ON p.ptno = s.ptno) pt
+			WHERE u.userNo = pt.userno
+			and pt.ptno = #{ptNo}
+
+		 ]]>
+	</select>
+	
+	<!-- 회원검색 -->
+	<select id="selectUserInfo" parameterType="String" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+		
+			SELECT userNo, userId, name, profileImg
+			FROM users
+			WHERE usertype = 'normal'
+			AND userId = #{userId}
+			
+		]]>
+	</select>
+	
+	<!-- pt등록 -->
+	<insert id="insertPt" parameterType="map">
+		<![CDATA[
+		
+			INSERT INTO pt
+			VALUES(SEQ_PTNO.nextval, #{userNo}, #{trainerNo}, SYSDATE, ADD_MONTHS(SYSDATE, #{period}), #{regCount}, '')
+	
+		]]>
+	</insert>
+	
+	<!-- 메모수정 -->
+	<update id="updateMemo" parameterType="map">
+		<![CDATA[
+		
+			UPDATE pt
+			SET memo = #{memo}
+			WHERE ptNo = #{ptNo}
+		
+		]]>
+	</update>
+	
+	<!-- 인바디 리스트 불러오기 -->
+	<select id="selectInbodyList" parameterType="int" resultType="com.javaex.vo.InbodyVo">
+		<![CDATA[
+		
+			SELECT	inbodyNo, TO_CHAR(measureDate,'yyyy-mm-dd') measureDate, weight, percentFat, musclemass, bmi
+			FROM 	inbody
+			WHERE 	ptNo = #{ptNo}
+			ORDER BY measureDate DESC
+			
+		]]>
+	</select>
+	
+	<!-- 인바디 정보 1개 불러오기 -->
+	<select id="selectInbodyInfo" parameterType="int" resultType="com.javaex.vo.InbodyVo">
+		<![CDATA[
+		
+			SELECT weight, percentFat, muscleMass, bmi, TO_CHAR(measureDate, 'yyyy-mm-dd') measureDate
+			FROM   inbody
+			WHERE  inbodyNo = #{inbodyNo}
+		
+		]]>
+	</select>
+	
+	<!-- 인바디 저장하기 -->
+	<insert id="insertInbody" parameterType="com.javaex.vo.InbodyVo">
+		<selectKey keyProperty="inbodyNo" resultType="int" order="BEFORE">
+			SELECT SEQ_INBODYNO.nextval FROM dual
+		</selectKey>
+		<![CDATA[
+		
+			INSERT INTO inbody
+			VALUES(#{inbodyNo}, #{ptNo}, SYSDATE, #{weight}, #{percentFat}, #{muscleMass}, #{bmi})
+		
+		]]>
+	</insert>
+	
+	<!-- pt 연장 -->
+	<update id="updatePt" parameterType="map">
+		<![CDATA[
+		
+			UPDATE pt
+			SET regcount = regcount + #{extendCount},
+			    endDate = add_months(endDate, #{extendMonth})
+			WHERE ptNo = #{ptNo}
+		
+		]]>
+	</update>
+	
+	<!-- 개인회원 인바디정보 보기 -->
+	<select id="selectUserInbodyList" parameterType="int" resultType="com.javaex.vo.InbodyVo">
+		<![CDATA[
+		
+			SELECT i.inbodyNo, TO_CHAR(i.measureDate, 'yyyy-mm-dd') measureDate,
+				   i.weight, i.percentFat, i.musclemass, i.bmi
+			FROM inbody i left outer join pt p
+			ON i.ptNo = p.ptNo
+			WHERE p.userNo = #{userNo}
+			ORDER BY inbodyNo DESC
+		
+		]]>
+	</select>
+	
+	<!-- 개인회원 최근 인바디정보 -->
+	<select id="selectRecentInbody" parameterType="int" resultType="com.javaex.vo.InbodyVo">
+		<![CDATA[
+		
+			SELECT
+			    inbodyNo, TO_CHAR(measureDate, 'yyyy-mm-dd') measureDate,
+			    weight, percentFat, muscleMass, bmi
+			FROM inbody 
+			WHERE
+			    inbodyNo = (
+			        SELECT max(i.inbodyNo)
+			        FROM inbody i, pt p
+			        WHERE i.ptNo = p.ptNo
+			        AND p.userNo = #{userNo})
+		
+		]]>
+	</select>
+
+	<!-- 개인회원 요약부분 -->
+	<select id="summaryNormal" parameterType="int" resultType="com.javaex.vo.PtVo">
+		<![CDATA[
+		
+			SELECT 
+			    pt.ptNo, pt.startDate, pt.endDate, pt.intEndDate, pt.regcount, s.scheduleCount
+			FROM
+			    (SELECT
+			       p.ptNo, TO_CHAR(p.startdate, 'yyyy-mm-dd') startDate, TO_CHAR(p.endDate, 'yyyy-mm-dd') endDate, TO_CHAR(p.endDate, 'yyyymmdd') intEndDate, p.regcount
+			    FROM pt p LEFT OUTER JOIN users u
+			    ON p.trainerNo = u.userNo) pt
+			LEFT OUTER JOIN
+			    (SELECT ptNo, COUNT(scheduleNo) scheduleCount
+			    FROM schedule
+			    GROUP BY ptNo) s
+			ON pt.ptNo = s.ptNo
+			WHERE pt.ptno = (SELECT max(ptNo)
+			                    FROM pt
+			                    WHERE userNo = #{userNo})
+
+		 ]]>
+	</select>
+	
+	<!-- 다음 pt -->
+	<select id="nextPt" parameterType="int" resultType="com.javaex.vo.ScheduleVo">
+		<![CDATA[
+		
+
+			SELECT ROWNUM, startTime, endTime
+			FROM(	SELECT 
+						    TO_CHAR(startTime, 'yyyy-mm-dd AM hh:mi', 'NLS_DATE_LANGUAGE=ENGLISH') startTime,
+						    TO_CHAR(endtime, 'hh:mi') endtime,
+						    state
+						FROM schedule
+			WHERE state = 'confirm' 
+			AND ptNo = (SELECT MAX(ptNo)
+			            FROM pt
+			            WHERE userNo = #{userNo})
+			AND startTime > sysdate
+			ORDER BY startTime asc)
+			WHERE ROWNUM = 1
+
+		 ]]>
+	</select>
+	
+	<!-- 예약 리스트 -->
+	<select id="selectReserveList" parameterType="int" resultType="com.javaex.vo.ScheduleVo">
+		<![CDATA[
+		
+				SELECT  scheduleNo,
+				        	state,
+				        	TO_CHAR(startTime, 'yyyy-mm-dd AM hh:mi', 'NLS_DATE_LANGUAGE=ENGLISH') startTime
+				FROM    schedule
+				WHERE   ptNo = (SELECT MAX(ptNo)
+						                FROM pt
+						                WHERE userNo = #{userNo})
+				AND startTime > sysdate
+				ORDER BY startTime asc
+
+		 ]]>
+	</select>
+	
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <typeAliases>
+        <typeAlias alias="ExVo" type="com.javaex.vo.ExerciseVo" />
+        <typeAlias alias="RecordVo" type="com.javaex.vo.RecordVo" />
+        <typeAlias alias="ScheduleVo" type="com.javaex.vo.ScheduleVo" />
+        <typeAlias alias="SearchVo" type="com.javaex.vo.SearchVo" />
+        <typeAlias alias="UserVo" type="com.javaex.vo.UserVo" />
+    </typeAliases>
+
+    <mappers>
+    	<mapper resource="mybatis/mappers/review.xml" />
+        <mapper resource="mybatis/mappers/exercise.xml" />
+    	<mapper resource="mybatis/mappers/search.xml" />
+    	<mapper resource="mybatis/mappers/user.xml" />
+  		<mapper resource="mybatis/mappers/pt.xml" />
+  		<mapper resource="mybatis/mappers/record.xml" />
+  		<mapper resource="mybatis/mappers/schedule.xml" />
+    </mappers>
+</configuration>

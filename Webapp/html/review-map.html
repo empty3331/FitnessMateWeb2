@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>review</title>
+    <!-- icon 사용을 위한 css -->
+    <link rel="stylesheet" href="../assets/css/fontawesome/all.css">
+
+    <!-- 반드시 넣어야 하는 2가지 css -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+
+    <!-- 반드시 넣어야 하는 2가지 js -->
+    <script src="../assets/js/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/modal.js"></script>
+
+    <!-- slide -->
+    <link href="../assets/js/swiper-4.2.6/dist/css/swiper.min.css"
+          rel="stylesheet">
+    <script src="../assets/js/swiper-4.2.6/dist/js/swiper.min.js"></script>
+
+    <!-- 해당 페이지 css -->
+    <link rel="stylesheet" href="../assets/css/review.css">
+
+
+</head>
+<body>
+
+    <header id="header">
+        <div class="wrapper clearfix">
+            <h1 class="logo">
+                <a href="../html/index.html">
+                    <img src="../assets/image/logoB.jpeg" title="logo" alt="logo">
+                </a>
+            </h1>
+            <a href="../html/search.html" class="search-link"><i class="fas fa-search"></i></a>
+            <nav id="nav">
+            </nav>
+            <div class="btn-area clearfix">
+                <a href="index.html" class="button sub">로그아웃</a>
+                <a href="trainer_schedule.html" class="button main">마이페이지</a>
+            </div>
+        </div>
+    </header>
+    <!-- header가 필요한 페이지에서 사용 -->
+
+
+    <div id="container">
+        <div class="test-background" style="background-color: #008526; height: 350px;">
+        </div>
+        <div class="wrapper clearfix">
+
+            <!--리뷰페이지 -->
+            <div class="reviewPage">
+
+                <!--메뉴바 -->
+                <div>
+                    <a class="trainerProfile">프로필</a>
+                    <a href="../html/review.html" class="trainerProfile">리뷰</a>
+                    <a href="../html/review-map.html" class="trainerProfile">위치</a>
+                </div>
+                <!--메뉴바 -->
+                <p align="middle">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d791.4329280714894!2d127.00805882923034!3d37.490656998738274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfb1c8c9cf315c5b7!2z64Sk7J207LOQ7ZyY7Yq464uI7Iqk7YG065-9!5e0!3m2!1sko!2skr!4v1597225218399!5m2!1sko!2skr"
+                            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""
+                            aria-hidden="false" tabindex="0"></iframe>
+                </p>
+                <div class="mapName">네이처휘트니스센터</div>
+                <div class="mapName2">세부도시 세부구 세부동 세부건물 111호</div>
+            </div>
+            <!--리뷰페이지 -->
+
+        </div>
+    </div>
+
+    <footer id="footer">
+        <div class="wrapper">
+            <ul class="agree clearfix">
+                <li><a href="#none">개인정보처리방침</a></li>
+                <li><a href="#none">이용약관</a></li>
+                <li><a href="#none">이메일무단수집거부</a></li>
+                <li><a href="#none">뉴스레터신청</a></li>
+                <li><a href="#none">사이트맵</a></li>
+            </ul>
+            <address>
+                <p>
+                    <span>피트니스메이트(주)</span>
+                    <span>사업자 등록번호 231-81-24552</span>
+                    <span>대표이사 황예지, 김주혜</span>
+                    <span>주소 서울특별시 동대문구 천호대로 26 (신설동) 효정빌딩</span>
+                </p>
+                <p>
+                    <span class="on">제품관련 고객상담 080-000-0000</span>
+                    <span class="on">웹사이트문의 02-2222-2222</span>
+                    <span>상담시간 평일 09:00~17:30(토, 일요일, 공휴일 휴무)</span>
+                    <span>개인정보 관리책임자 이웅희</span>
+                </p>
+            </address>
+            <p class="right"><span>COPYRIGHT 하이미디어 풀스택과정 C팀.</span> ALL RIGHTS RESERVED.</p>
+        </div>
+
+    </footer>
+    <!-- footer가 필요한 페이지에서 사용 -->
+
+
+    <div class="modal-layer" id="testModal">
+        <div class="modal-review">
+            <div class="modal-content">
+                <img class="review-imgSizefull" src='../assets/image/review-test1.jpg' );>
+            </div>
+            <div class="modal-btn-area full-modal-btn"> <!-- 버튼이 하나인 모달인 경우 modal-btn-area 옆에 full-modal-btn 달아주세요 -->
+                <!--   버튼이 필요 없으면 btn-area는 만들지 않아도 됩니다 -->
+                <!-- 모달 html 위치는 항상 바디 닫히기 직전으로 부탁합니다 -->
+                <!-- 모달 열기 : showModal('#sampleModal') -->
+                <!-- 모달 닫기 : forceHideModal('#sampleModal') -->
+                <button type="button" class="modal-cancel" onclick="forceHideModal('#testModal')">닫기</button>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

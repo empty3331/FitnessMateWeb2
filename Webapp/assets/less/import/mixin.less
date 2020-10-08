@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+//less calc
+.calcWidth(@width) {
+  width: ~"calc(100% - @{width})";
+}
+
+//clearfix
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+//한줄짜리 문단 말줄임
+.single-ellipsis() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//여러줄 문단 말줄임
+.multiple-ellipsis(@lineHeight, @lineClamp) {
+  line-height: @lineHeight;
+  height: (@lineHeight * @lineClamp * 1em);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @lineClamp;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>review</title>
+    <!-- icon 사용을 위한 css -->
+    <link rel="stylesheet" href="../assets/css/fontawesome/all.css">
+
+    <!-- 반드시 넣어야 하는 2가지 css -->
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <link rel="stylesheet" href="../assets/css/common.css">
+
+    <!-- 반드시 넣어야 하는 2가지 js -->
+    <script src="../assets/js/jquery/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/modal.js"></script>
+
+    <!-- slide -->
+    <link href="../assets/js/swiper-4.2.6/dist/css/swiper.min.css"
+          rel="stylesheet">
+    <script src="../assets/js/swiper-4.2.6/dist/js/swiper.min.js"></script>
+
+    <!-- 해당 페이지 css -->
+    <link rel="stylesheet" href="../assets/css/review.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../assets/js/review/swiper.min.css">
+    <!-- Swiper JS -->
+    <script src="../assets/js/review/swiper.min.js"></script>
+
+</head>
+<body>
+
+    <header id="header">
+        <div class="wrapper clearfix">
+            <h1 class="logo">
+                <a href="../html/index.html">
+                    <img src="../assets/image/logoB.jpeg" title="logo" alt="logo">
+                </a>
+            </h1>
+            <a href="../html/search.html" class="search-link"><i class="fas fa-search"></i></a>
+            <nav id="nav">
+            </nav>
+            <div class="btn-area clearfix">
+                <a href="index.html" class="button sub">로그아웃</a>
+                <a href="trainer_schedule.html" class="button main">마이페이지</a>
+            </div>
+        </div>
+    </header>
+    <!-- header가 필요한 페이지에서 사용 -->
+
+
+    <div id="container">
+        <div class="test-background" style="background-color: #008526; height: 350px;">
+        </div>
+        <div class="wrapper clearfix">
+
+            <!--리뷰페이지 -->
+            <div class="reviewPage">
+
+                <!--메뉴바 -->
+                <div>
+                    <a class="trainerProfile">프로필</a>
+                    <a href="../html/review.html" class="trainerProfile">리뷰</a>
+                    <a href="../html/review-map.html" class="trainerProfile">위치</a>
+
+                </div>
+                <!--메뉴바 -->
+
+                <ul>
+                    <li class="review-line">
+
+
+                        <div class="userProfile">
+
+                            <img class="userProfile-img" src='../assets/image/unnamed.jpg' );>
+
+                            <div class="userProfile-info">
+                                <div class="userProfile-name">김**</div>
+                                <div class="userProfile-date">운동기간- n개월</div>
+                                <div class="userProfile-date">2020-08-11</div>
+                            </div>
+                            <div class="userProfile-star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="box">
+                            <div class="content">여긴 리뷰내용 쓰는 곳입니다.
+                                리뷰내용은 쏼라쏼라쏼라입니다.<br>
+                                가나다라마바사아자차카타파하아야어여오요우유 으이~
+                            </div>
+                        </div>
+
+                        <img class="review-imgSize" onclick="showModal('#testModal')" src='../assets/image/unnamed.jpg'
+                             );>
+                        <img class="review-imgSize" onclick="showModal('#testModal')"
+                             src='../assets/image/main-test-02.jpg' );>
+                        <img class="review-imgSize" onclick="showModal('#testModal')"
+                             src='../assets/image/review-test2.jpg' );>
+                        <div class="clearfix review-btn-area">
+                            <button type="button" class="button">삭제</button>
+                            <button type="button" class="button">수정</button>
+                        </div>
+                    </li>
+                    <li class="review-line">
+
+                        <div class="userPrbofile">
+
+                            <img class="userProfile-img" src='../assets/image/unnamed.jpg' );>
+
+                            <div class="userProfile-info">
+                                <div class="userProfile-name">최**</div>
+                                <div class="userProfile-date">운동기간- n개월</div>
+                                <div class="userProfile-date">2020-08-11</div>
+
+                            </div>
+                            <div class="userProfile-star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+
+                        <!--글 더보기 다른방식
+                        <details>
+                            <summary>더 많은 내용</summary>
+                            <p>내부에 넣을 내용을 입력해주세요</p>
+                        </details>  -->
+
+                        <div class="box">
+                            <div class="content">
+                                두기 힘차게 원질이 시들어 스며들어 청춘 그리하였는가?유소년에게서 현저하게 그러므로 어디 인류의 것이다.
+                                귀는 길을 기쁘며, 청춘 실현에 가지에 아니다. 것이 이상의 유소년에게서 가지에 때에, 커다란 듣기만 있다.
+                                봄날의 보는 피가 가는 있으랴? 인생에 위하여, 구하지 것은 그들은 용감하고 싹이 뭇 주는 피다.<br>
+                                얼음과 구할 봄날의 새 인간의 위하여 것이다. 불어 따뜻한 없으면 내는 가진 듣기만 눈에 끝에 주는 있다. 이상 동산에는 피부가 과실이 아니다.
+
+                                위하여서 그들에게 노래하며 것이다. 위하여서, 예수는 밥을 이상의 우리는 봄바람을 힘있다. 하였으며,
+                                그들의 만천하의 아름답고 인간의 소리다.이것은 피다. 주는 없는 거선의 같은 기관과 커다란 두기 속잎나고, 인류의 있으랴?
+                                우리 찾아 인도하겠다는 이상의 노래하며 이 착목한는 천자만홍이 봄바람이다. 새가 크고 생의 무엇을 맺어,
+                                꽃이 목숨이 없으면 이것이다. 인생을 가지에 그들의 할지라도 많이 안고, 약동하다.<br>
+                                길을 뜨고, 얼음에 그들에게 봄바람이다. 구하지 같이, 이성은 불어 열락의 설레는 청춘 뿐이다.
+                                얼마나 원질이 것은 전인 있으며, 이상을 찾아다녀도, 찾아 이는 때문이다. 하는 발휘하기 무한한 하여도 내려온 같이, 살 같으며, 때문이다.
+                                청춘에서만 같이 방황하였으며, 있는 보이는 원대하고, 이것이다. 어디 동력은 가는 산야에 찾아다녀도, 얼음과 얼음에 것이다.보라, 것이다.
+                                무엇이 영원히 새가 길을 일월과 위하여서. 같은 그것을 그들의 얼음과 것이다. 우리의 만천하의 열락의 붙잡아 싸인 끝까지 보이는 아름다우냐?
+                                모래뿐일 청춘의 몸이 것이다. 평화스러운 무엇을 바이며, 피고 같이 피가 위하여서. 하는 어디 기관과 얼마나 있는가?
+                            </div>
+
+                        </div>
+                        <img class="review-imgSize" onclick="showModal('#testModal')"
+                             src='../assets/image/review-test1.jpg' );>
+
+                        <div class="clearfix review-btn-area">
+                            <button type="button" class="button">삭제</button>
+                            <button type="button" class="button">수정</button>
+                        </div>
+                    </li>
+                    <li class="review-line">
+
+                        <div class="userProfile">
+
+                            <img class="userProfile-img" src='../assets/image/unnamed.jpg' );>
+
+                            <div class="userProfile-info">
+                                <div class="userProfile-name">박**</div>
+                                <div class="userProfile-date">운동기간- n개월</div>
+                                <div class="userProfile-date">2020-08-11</div>
+                            </div>
+                            <div class="userProfile-star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+
+                        </div>
+
+                        <div class="box">
+                            <div class="content">
+                                두기 힘차게 원질이 시들어 스며들어 청춘 그리하였는가?유소년에게서 현저하게 그러므로 어디 인류의 것이다.
+                                귀는 길을 기쁘며, 청춘 실현에 가지에 아니다. 것이 이상의 유소년에게서 가지에 때에, 커다란 듣기만 있다.
+                                봄날의 보는 피가 가는 있으랴? 인생에 위하여, 구하지 것은 그들은 용감하고 싹이 뭇 주는 피다.<br>
+                                얼음과 구할 봄날의 새 인간의 위하여 것이다. 불어 따뜻한 없으면 내는 가진 듣기만 눈에 끝에 주는 있다. 이상 동산에는 피부가 과실이 아니다.
+
+                                위하여서 그들에게 노래하며 것이다. 위하여서, 예수는 밥을 이상의 우리는 봄바람을 힘있다. 하였으며,
+                                그들의 만천하의 아름답고 인간의 소리다.이것은 피다. 주는 없는 거선의 같은 기관과 커다란 두기 속잎나고, 인류의 있으랴?
+                                우리 찾아 인도하겠다는 이상의 노래하며 이 착목한는 천자만홍이 봄바람이다. 새가 크고 생의 무엇을 맺어,
+                                꽃이 목숨이 없으면 이것이다. 인생을 가지에 그들의 할지라도 많이 안고, 약동하다.<br>
+                                길을 뜨고, 얼음에 그들에게 봄바람이다. 구하지 같이, 이성은 불어 열락의 설레는 청춘 뿐이다.
+                                얼마나 원질이 것은 전인 있으며, 이상을 찾아다녀도, 찾아 이는 때문이다. 하는 발휘하기 무한한 하여도 내려온 같이, 살 같으며, 때문이다.
+                                청춘에서만 같이 방황하였으며, 있는 보이는 원대하고, 이것이다. 어디 동력은 가는 산야에 찾아다녀도, 얼음과 얼음에 것이다.보라, 것이다.
+                                무엇이 영원히 새가 길을 일월과 위하여서. 같은 그것을 그들의 얼음과 것이다. 우리의 만천하의 열락의 붙잡아 싸인 끝까지 보이는 아름다우냐?
+                                모래뿐일 청춘의 몸이 것이다. 평화스러운 무엇을 바이며, 피고 같이 피가 위하여서. 하는 어디 기관과 얼마나 있는가?
+                            </div>
+                        </div>
+
+
+                        <div class="clearfix review-btn-area">
+                            <button type="button" class="button">삭제</button>
+                            <button type="button" class="button">수정</button>
+                        </div>
+
+                    </li>
+                    <li class="review-line">
+
+                        <div class="userProfile">
+
+                            <img class="userProfile-img" src='../assets/image/review-test2.jpg' );>
+
+                            <div class="userProfile-info">
+                                <div class="userProfile-name">이**</div>
+                                <div class="userProfile-date">운동기간- n개월</div>
+                                <div class="userProfile-date">2020-08-11</div>
+                            </div>
+                            <div class="userProfile-star">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+
+                        <div class="box">
+                            <div class="content">여긴 리뷰내용 쓰는 곳입니다.
+                                리뷰내용은 쏼라쏼라쏼라입니다.<br>
+                                이 트레이너분 맨날 하나만 더라면서 열 번 더시킵니다.<br>
+                                완전 사기꾼이예요.
+                            </div>
+                        </div>
+                        <div class="clearfix review-btn-area">
+                            <button type="button" class="button">삭제</button>
+                            <button type="button" class="button">수정</button>
+                        </div>
+                    </li>
+                </ul>
+
+
+                <!--리뷰페이지 -->
+
+            </div>
+        </div>
+
+        <footer id="footer">
+            <div class="wrapper">
+                <ul class="agree clearfix">
+                    <li><a href="#none">개인정보처리방침</a></li>
+                    <li><a href="#none">이용약관</a></li>
+                    <li><a href="#none">이메일무단수집거부</a></li>
+                    <li><a href="#none">뉴스레터신청</a></li>
+                    <li><a href="#none">사이트맵</a></li>
+                </ul>
+                <address>
+                    <p>
+                        <span>피트니스메이트(주)</span>
+                        <span>사업자 등록번호 231-81-24552</span>
+                        <span>대표이사 황예지, 김주혜</span>
+                        <span>주소 서울특별시 동대문구 천호대로 26 (신설동) 효정빌딩</span>
+                    </p>
+                    <p>
+                        <span class="on">제품관련 고객상담 080-000-0000</span>
+                        <span class="on">웹사이트문의 02-2222-2222</span>
+                        <span>상담시간 평일 09:00~17:30(토, 일요일, 공휴일 휴무)</span>
+                        <span>개인정보 관리책임자 이웅희</span>
+                    </p>
+                </address>
+                <p class="right"><span>COPYRIGHT 하이미디어 풀스택과정 C팀.</span> ALL RIGHTS RESERVED.</p>
+            </div>
+
+        </footer>
+        <!-- footer가 필요한 페이지에서 사용 -->
+
+
+        <div class="modal-layer" id="testModal">
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">글씨</div>
+                    <div class="swiper-slide"><img class="review-imgSizeful" src='../assets/image/review-test1.jpg' );>
+                    </div>
+                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide">Slide 4</div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Arrows -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </div>
+
+        <script text="javascript/text">
+
+            $(document).ready(function () {
+
+                $('.box').each(function () {
+                    var content = $(this).children('.content');
+                    var content_txt = content.text();
+                    var content_txt_short = content_txt.substring(0, 300);
+                    var btn_more = $('<a href="javascript:void(0)" class="more">더보기</a>');
+
+
+                    $(this).append(btn_more);
+
+                    if (content_txt.length >= 300) {
+                        content.html(content_txt_short)
+
+                    } else {
+                        btn_more.hide()
+                    }
+
+                    btn_more.click(toggle_content);
+                    // 아래 bind가 안 되는 이유는??
+                    // btn_more.bind('click',toggle_content);
+
+                    function toggle_content() {
+                        if ($(this).hasClass('short')) {
+                            // 접기 상태
+                            $(this).html('더보기');
+                            content.html(content_txt_short)
+                            $(this).removeClass('short');
+                        } else {
+                            // 더보기 상태
+                            $(this).html('접기');
+                            content.html(content_txt);
+
+                            $(this).addClass('short');
+
+                        }
+                    }
+                });
+            });
+
+
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                paginationClickable: true,
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                spaceBetween: 30
+            });
+
+
+        </script>
+
+
+</body>
+</html>

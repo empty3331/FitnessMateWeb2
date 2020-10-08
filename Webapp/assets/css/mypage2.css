@@ -1,0 +1,593 @@
+@charset "UTF-8";
+
+/* 체크박스 */
+.checkboxPart {
+	width: 80%;
+	margin: 10px 0px 30px -10px;
+	line-height: 45px;
+	word-break: keep-all;
+	text-align: center;
+}
+
+.button-label {
+	padding: 5px 10px;
+	margin: 10px;
+	background: #dbf2e1;
+	cursor: pointer;
+	border-radius: 25px;
+	transition: 0.3s;
+	user-select: none;
+}
+
+.button-label:active {
+	transform: translateY(2px);
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+input[type="checkbox"]:checked+label {
+	background: #008526;
+	color: #ffffff;
+}
+
+#container .wrapper form button[type="submit"] {
+	width: 130px;
+	margin: 30px auto 30px;
+}
+
+div.award-info div {
+	position: relative;
+	width: 50%;
+}
+
+div.award-info div i.deleteNew {
+	font-size: 18px;
+	position: absolute;
+	top: 5px;
+	right: 18px;
+}
+
+div.award-info i {
+	cursor: pointer;
+}
+
+/* 회원관리 */
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper
+	{
+	padding: 0px;
+}
+
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper img
+	{
+	float: left;
+	width: 405px;
+	height: 405px;
+}
+
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper div
+	{
+	padding-left: 430px;
+	text-align: left;
+	line-height: 180%;
+}
+
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper div p.label
+	{
+	font-size: 18px;
+	font-weight: 600;
+	margin-top: 10px;
+}
+
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper div textarea
+	{
+	width: 350px;
+	margin: 5px 0px 5px 5px;
+	padding: 5px;
+}
+
+div.modal-layer div.modal-wrapper div.modal-content div.profile-wrapper div button
+	{
+	background-color: #008526;
+	float: right;
+	color: #ffffff;
+	border: 1px solid #008526;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+/* 회원 등록 */
+.modal-wrapper .modal-content .search-result div.user .schedule-input-wrapper .schedule-input
+	{
+	width: 60px !important;
+	height: 35px !important;
+	margin-left: 5px;
+}
+
+.modal-wrapper .modal-content .search-result div.user .schedule-input-wrapper
+	{
+	margin-top: 20px !important;
+}
+
+.modal-wrapper .modal-content .search-result p.errMsg, p.defaultMsg {
+	float: left;
+	margin: 30px 0px 0px 45px;
+}
+
+.schedule-wrapper button#btn-reserved {
+	float: right; width : 125px;
+	height: 40px;
+	background: none;
+	border: 1px solid #fff;
+	color: #fff;
+	font-size: 14px;
+	margin: 15px 5px 0px 0px;
+	width: 125px;
+}
+
+.schedule-wrapper .reserved-wrapper {
+	height: 230px;
+	overflow: visible;
+	font-size: 18px;
+}
+
+.schedule-wrapper .reserved-wrapper i {
+	color: #fff;
+	margin-right: 6px;
+}
+
+.schedule-wrapper .reserved-wrapper .fa-times {
+	color: #dc3545;
+	font-size: 110%;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.schedule-wrapper .reserved-wrapper .fa-question {
+	color: #28a745;
+	cursor: pointer;
+}
+.schedule-wrapper .reserved-wrapper .fa-spinner {
+	color: #ffc107;
+}
+.schedule-wrapper .reserved-wrapper .fa-check {
+	color: #007bff;
+}
+.summary-wrapper .summary .schedule-list li .time{
+	position: relative;
+}
+.summary-wrapper .summary .schedule-list li .time .tipMsg{
+	background-color: rgba( 0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 13px;
+    padding: 8px;
+    position: absolute;
+    top: -26px;
+    left: 20px;
+}
+.summary-wrapper .summary .schedule-list li .time .btnPop {
+    position: absolute;
+    top: -43px;
+    right: 29px;
+    color: #fff;
+    border: 1px solid #fff;
+    background-color: rgba( 0, 0, 0, 0.8);
+    -webkit-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.summary-wrapper .summary .schedule-list li .time .btnPop .button {
+	display: inline-block;
+    border-radius: 0;
+    margin: 0;
+    width: 100px;
+    height: 40px;
+    border: 1px solid #fff;;
+    background: transparent;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* 인바디 모달 */
+div.inbody_record {
+	float: left;
+}
+
+div.graph {
+	float: right;
+	background-color: #aaaaaa;
+	width: 500px;
+	height: 400px;
+}
+
+div.inbody-wrapper div.inbody_record table tr th {
+	width: 100px;
+	height: 50px;
+	text-align: right;
+	font-weight: 600;
+}
+
+div.inbody-wrapper div.inbody_record table tr td input {
+	width: 100px;
+	height: 35px;
+}
+
+div.inbody-wrapper div.inbody_record table tr td {
+	padding-left: 15px;
+}
+
+div.inbody-wrapper div.inbody_record table {
+	margin: 50px 0px 0px 22px;
+}
+
+div.inbody-wrapper div.inbody_record {
+	width: 250px;
+	height: 400px;
+	position: relative;
+}
+
+div.inbody-wrapper div.inbody_record button {
+	position: absolute;
+	bottom: 10px;
+	right: -10px;
+}
+
+form#editProfileForm .main-info .main-info-wrapper.secDiv, form#editProfileForm .info-wrapper .info.secDiv
+	{
+	width: 35%;
+}
+
+#userInfoModal .modal-content .profile-wrapper div.extendForm {
+	width: 250px;
+	position: absolute;
+	bottom: 150px;
+	right: 35px;
+}
+
+#userInfoModal .modal-content .profile-wrapper #showAddCount,
+	#btnAddCount {
+	width: 70px;
+	position: absolute;
+	bottom: 165px;
+	right: 35px;
+}
+
+#userInfoModal .modal-content .profile-wrapper div.extendForm input {
+	width: 50px;
+	display: inline-block;
+}
+
+#canvas {
+	float: left;
+}
+/* 일반회원 인바디 보기 */
+.content-wrapper {
+	margin-bottom: 50px;
+	height: 550px;
+	position: relative;
+}
+
+.content-wrapper>p {
+	font-weight: 600;
+	font-size: 25px;
+	padding-bottom: 35px;
+}
+
+/* 선택 박스 스타일 */
+.box_color {
+	border: 1px solid #292c33;
+	border-radius: 10PX;
+	width: 200px;
+	height: 450px;
+	padding: 10px;
+	line-height: 180%;
+	text-align: center;
+	float: left;
+}
+
+.box_color>div {
+	height: 400px;
+	overflow: auto;
+}
+
+.box_color div ol li:hover {
+	background-color: #979dac;
+	cursor: pointer;
+}
+/* 선택박스 헤더 스타일 */
+.box_color p {
+	line-height: 200%;
+	font-weight: 600;
+	font-size: 18px;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #292c33;
+}
+/* 스크롤 css */
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	border-radius: 3px;
+	background-color: #979dac;
+}
+
+::-webkit-scrollbar-thumb {
+	border-radius: 3px;
+	background-color: #292c33;
+}
+
+div.tableBox {
+	margin: 1px 80px 0px 80px;
+	width: 200px;
+	height: 450px;
+	padding: 10px;
+	text-align: center;
+	float: left;
+}
+
+div.graphBox {
+	width: 500px;
+	height: 400px;
+	background-color: #aaaaaa;
+	margin: 30px 0px 0px 50px;
+	float: left;
+}
+
+div.content-wrapper table {
+	margin-top: 80px;
+}
+
+div.content-wrapper table tr th {
+	width: 100px;
+	height: 50px;
+	text-align: right;
+	font-weight: 600;
+}
+
+div.content-wrapper table tr td input {
+	width: 100px;
+	height: 35px;
+}
+
+div.content-wrapper table tr td {
+	padding-left: 15px;
+	text-align: left;
+}
+
+.tableBox p {
+	line-height: 200%;
+	font-weight: 600;
+	font-size: 18px;
+	padding-bottom: 5px;
+	margin-bottom: 13px;
+	border-bottom: 1px solid #292c33;
+}
+
+.content-wrapper .recordList {
+	float: left;
+	width: 350px;
+	border: none;
+	margin: 2px 0px 0px 35px;
+}
+
+.content-wrapper .recordList .emtMsg {
+	height: auto;
+	margin-top: 20px;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+div.content-wrapper div.recordList table {
+	margin: 5px auto 0px;
+	border-bottom: 1px solid #dadde6;
+	border-radius: 5px;
+}
+
+div.content-wrapper div.recordList table th {
+	text-align: center;
+	vertical-align: middle;
+	padding: 10px;
+	width: 80px;
+}
+
+div.content-wrapper div.recordList table td.exTitle {
+	color: #cc2121;
+	font-size: 20px;
+}
+
+div.content-wrapper div.recordList table td {
+	width: 200px;
+	padding: 4px;
+}
+
+.box_color ul li:hover {
+	background-color: #dadde6;
+	cursor: pointer;
+}
+
+#container .wrapper #editProfileForm {
+	position: relative;
+}
+
+#container .wrapper #editProfileForm #profileOpen {
+	position: absolute;
+	top: 20px;
+	right: 15px;
+	width: 150px;
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+#container .wrapper #editProfileForm #profileOpen p {
+	float: left;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 20px;
+}
+
+#container .wrapper #editProfileForm #profileOpen>div {
+	float: right;
+	width: 34px;
+	height: 20px;
+	position: relative;
+}
+
+#container .wrapper #editProfileForm #profileOpen div label {
+	display: block;
+	width: 45px;
+	height: 25px;
+	box-sizing: border-box;
+	border-radius: 36px;
+	border: 1px solid #e5e5e5;
+	background: #fff;
+	transition: all 0.3s ease;
+}
+
+#container .wrapper #editProfileForm #profileOpen div label span {
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	display: block;
+	width: 17px;
+	height: 17px;
+	border-radius: 50%;
+	box-sizing: border-box;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.25), 0 3px 3px 0
+		rgba(0, 0, 0, 0.15);
+	transition: all 0.3s cubic-bezier(0.275, -0.45, 0.725, 1.45);
+	background: #fff;
+}
+
+#container .wrapper #editProfileForm #profileOpen input:active+div label,
+	#container .wrapper #editProfileForm #profileOpen input:checked+div label
+	{
+	border: 10px solid #008526;
+	box-shadow: 0 0 5px #008526;
+	background: #008526;
+}
+
+#container .wrapper #editProfileForm #profileOpen input:active+div label>span,
+	#container .wrapper #editProfileForm #profileOpen input:checked+div label>span
+	{
+	left: 24px;
+}
+
+/* 요약부분 CSS 수정 */
+.summary-wrapper .summary .statistics {
+	color: #fff;
+	text-align: left;
+}
+
+.summary-wrapper .summary .statistics h3.title.left {
+	text-align: left;
+}
+
+.summary-wrapper .summary .statistics .info {
+	color: #fff;
+	font-size: 20px;
+	margin-bottom: 25px;
+}
+
+/* 예약 모달 */
+#reservationModal{
+	position: fixed;
+    top: -15%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#reservationModal .modal-wrapper{
+	width: 700px;
+}
+#reservationModal .modal-wrapper #modalCalender{
+	float: left;
+}
+#reservationModal .modal-wrapper .modal-btn-area {
+	float: right;
+	width: 50%;
+}
+#reservationModal .modal-wrapper .reserv-info{
+	float: right;
+	width: 50%;
+	text-align: left;
+	box-sizing: border-box;
+	padding-left: 15px;
+}
+#reservationModal .modal-wrapper .ui-widget-header {
+    border: none;
+    background: none;
+}
+#reservationModal .modal-wrapper  .ui-datepicker td {
+    padding: 3px;
+}
+#reservationModal .modal-wrapper .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border: none;
+    background: none;
+    padding: 8px 7px 8px 7px;
+    text-align: center;
+}
+#reservationModal .modal-wrapper .ui-widget.ui-widget-content{
+	margin: 50px 20px 50px 50px;
+    border: none;
+}
+#reservationModal .modal-wrapper .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover {
+    background: #cc2121;
+    border-radius: 50%;
+}
+#reservationModal .modal-wrapper .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    color: #cc2121;
+}
+#reservationModal .modal-wrapper .reserv-info h3.title{
+	text-align: left;
+	font-size: 24px;
+	margin-top: 55px;
+}
+#reservationModal .modal-wrapper .reserv-info .time-wrapper {
+	margin-top: 25px;
+}
+#reservationModal .modal-wrapper select {
+	width: 80px;
+	height: 35px;
+	display: inline-block !important;
+	margin: 0;
+}
+#reservationModal .modal-wrapper input[name="amount"] {
+	width: 100px;
+}
+
+#reservationModal .modal-wrapper .text {
+	font-size: 20px;
+	margin: 0 0 10px;
+	font-weight: 500;
+}
+#reservationModal .modal-wrapper ol {
+	margin: 0 30px 0 0;
+	float: left;
+}
+
+
+.content-wrapper .exSelect-wrapper select,
+.content-wrapper .exSelect-wrapper input{
+	display: inline-block;
+	width: 150px;
+}
+.content-wrapper .exSelect-wrapper{
+	position: relative;
+	float: left;
+	margin: 20px 0px 10px 30px;
+	width: 500px
+}
+.content-wrapper .exSelect-wrapper button{
+	position: absolute;
+    top: -1px;
+    right: 30px;
+    width: 135px;
+    height: 32px;
+    font-size: 14px;
+    line-height: 25px;
+    padding: 0px;
+}
+.content-wrapper .exSelect-wrapper > p{
+	font-weight: 600;
+	margin: 30px 0px 0px 30px;
+}
